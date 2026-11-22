@@ -265,7 +265,7 @@
         .backtest-table th:first-child,.backtest-table td:first-child{text-align:left}
         .progress-bar{height:6px;background:var(--bg-inner);border-radius:3px;overflow:hidden;margin:10px 0;border:1px solid var(--border)}
         .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));background-size:200% 100%;animation:gradientShift 2s ease infinite;border-radius:3px;transition:width .25s ease}
-        .progress-text{font-size:10px;color:var(--text-muted);font-weight:700;text-align:center;margin-top:6px}
+        .progress-text{font-size:10px;color:var(--text-muted);font-weight:700;text-align:center;margin-top:3px}
         .skeleton{background:linear-gradient(90deg,var(--bg-inner) 0%,var(--bg-hover) 50%,var(--bg-inner) 100%);background-size:200% 100%;animation:skeletonShine 1.6s infinite;border-radius:8px}
         .empty-state{text-align:center;padding:30px 16px;color:var(--text-dim);font-weight:600;font-size:13px}
         .copy-btn{background:var(--bg-inner);border:1px solid var(--border);color:var(--text-muted);padding:8px 14px;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:5px;transition:all .2s}
@@ -780,7 +780,6 @@
  .bottom-nav{padding:4px!important;border-radius:12px!important}
  .bottom-nav-btn{padding:6px 12px!important;font-size:9px!important;gap:2px!important}
 }
-
 
 
 /* ===== A'S LOTTERY · UI CLEANUP (CSS ONLY) ===== */
@@ -1514,18 +1513,6 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
 }
 </style>
 
-<style id="kawin-selection-green-score-v1">
-/* Warna hijau khusus badge skor pada card Seleksi Gabungan */
-#kawinSelectionOutput .kawin-modern-score{
-  background:rgba(34,197,94,.16)!important;
-  color:#4ade80!important;
-  border:1px solid rgba(74,222,128,.32)!important;
-}
-#kawinSelectionOutput .kawin-modern-score small{
-  color:#86efac!important;
-}
-</style>
-
 <style id="kawin-category-score-rank-green-v1">
 /* Kategori 2: samakan badge skor tren menjadi hijau seperti Seleksi Gabungan */
 #kawinOutput .kawin-modern-score{
@@ -1616,15 +1603,112 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
 
 
 <style id="kawin-category-dropdown-style">
-.kawin-category-dropdown{margin-top:10px;border:1px solid var(--border);border-radius:12px;background:var(--bg-inner);overflow:hidden}
-.kawin-category-dropdown>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;cursor:pointer;color:var(--text-muted);font-size:12px;font-weight:800}
-.kawin-category-dropdown>summary::-webkit-details-marker{display:none}
-.kawin-category-dropdown>summary:after{content:none}
-.kawin-category-dropdown-chevron{width:16px;height:16px;flex:0 0 16px;color:var(--accent-text);transition:transform .18s ease}
-.kawin-category-dropdown[open] .kawin-category-dropdown-chevron{transform:rotate(180deg)}
-.kawin-category-dropdown-body{padding:0 10px 12px}
-.kawin-category-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+/* Kawin Silang: satu level accordion, tanpa card bertumpuk */
+#kawinCard .kawin-results-categories{display:block;margin:14px 0 0;padding:0}
+#kawinCard .kawin-results-categories>section{
+  display:block;width:100%;margin:0!important;padding:0!important;
+  border:0!important;border-bottom:1px solid rgba(148,163,184,.22)!important;
+  border-radius:0!important;background:transparent!important;box-shadow:none!important;
+}
+#kawinCard .kawin-results-categories>section:last-child{border-bottom:0!important}
+#kawinCard .kawin-category-dropdown{
+  margin:0!important;border:0!important;border-radius:0!important;
+  background:transparent!important;overflow:hidden;
+}
+#kawinCard .kawin-category-dropdown>summary{
+  list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:58px;padding:15px 4px!important;cursor:pointer;
+  color:#facc15!important;font-size:clamp(12px,3.2vw,14px)!important;
+  line-height:1.4!important;font-weight:900!important;letter-spacing:.65px!important;
+}
+#kawinCard .kawin-category-dropdown>summary::-webkit-details-marker{display:none}
+#kawinCard .kawin-category-dropdown>summary:focus-visible{outline:2px solid #facc15!important;outline-offset:-3px;border-radius:8px}
+#kawinCard .kawin-section-kicker{display:block;margin:0!important;color:#facc15!important;font:inherit!important;letter-spacing:inherit!important}
+#kawinCard .kawin-category-dropdown-chevron{width:18px!important;height:18px!important;flex:0 0 18px;color:#facc15!important;transition:transform .18s ease}
+#kawinCard .kawin-category-dropdown[open] .kawin-category-dropdown-chevron{transform:rotate(180deg)}
+#kawinCard .kawin-category-dropdown-body{padding:0 4px 16px!important}
+#kawinCard .kawin-section-description{display:block!important;margin:0 0 12px!important;color:#aebbd0!important;font-size:12px!important;line-height:1.6!important}
+#kawinCard .kawin-history-toolbar{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between;margin:0 0 10px!important;padding:9px 11px!important;border:1px solid rgba(148,163,184,.16)!important;border-radius:10px!important;background:rgba(148,163,184,.055)!important;color:#aebbd0!important;font-size:10.5px!important;line-height:1.45!important}
+#kawinCard .kawin-result-note{margin:0 0 10px!important;padding:10px 11px!important;border:1px solid rgba(148,163,184,.16)!important;border-radius:11px!important;background:rgba(148,163,184,.055)!important;color:#aebbd0!important;font-size:10.5px!important;line-height:1.5!important}
+#kawinCard .kawin-all-grid{gap:9px!important}
+#kawinCard .kawin-all-item{min-width:0;border-radius:12px!important}
+@media(max-width:420px){
+ #kawinCard .kawin-category-dropdown>summary{min-height:54px;padding:13px 2px!important;font-size:11.5px!important}
+ #kawinCard .kawin-category-dropdown-body{padding:0 2px 14px!important}
+ #kawinCard .kawin-section-description{font-size:11px!important}
+}
 </style>
+
+<style id="kawin-flat-accordion-final">
+/* FINAL UI FIX: ratakan accordion, hilangkan card bersarang */
+#kawinCard .kawin-results-categories {
+  display:block !important; margin:12px 0 0 !important; padding:0 !important;
+  border:0 !important; border-radius:0 !important; background:transparent !important;
+  box-shadow:none !important;
+}
+#kawinCard .kawin-results-categories > section,
+#kawinCard .kawin-results-categories > section.kawin-history-section,
+#kawinCard .kawin-results-categories > section.kawin-auto-results {
+  display:block !important; width:100% !important; margin:0 !important; padding:0 !important;
+  border:0 !important; border-bottom:1px solid rgba(148,163,184,.22) !important;
+  border-radius:0 !important; background:transparent !important; box-shadow:none !important;
+}
+#kawinCard .kawin-results-categories > section:last-child { border-bottom:0 !important; }
+#kawinCard .kawin-results-categories details.kawin-category-dropdown {
+  display:block !important; margin:0 !important; padding:0 !important; border:0 !important;
+  border-radius:0 !important; background:transparent !important; box-shadow:none !important;
+  overflow:visible !important;
+}
+#kawinCard .kawin-results-categories details.kawin-category-dropdown > summary {
+  display:flex !important; align-items:center !important; justify-content:space-between !important;
+  gap:12px !important; min-height:58px !important; margin:0 !important; padding:15px 4px !important;
+  border:0 !important; border-radius:0 !important; background:transparent !important;
+  color:#facc15 !important; font-size:clamp(12px,3.2vw,14px) !important;
+  line-height:1.4 !important; font-weight:900 !important; letter-spacing:.65px !important;
+  list-style:none !important; cursor:pointer !important;
+}
+#kawinCard .kawin-results-categories details.kawin-category-dropdown > summary::-webkit-details-marker { display:none !important; }
+#kawinCard .kawin-results-categories .kawin-section-kicker {
+  display:block !important; margin:0 !important; padding:0 !important;
+  color:#facc15 !important; font:inherit !important; letter-spacing:inherit !important;
+}
+#kawinCard .kawin-results-categories .kawin-category-dropdown-body {
+  margin:0 !important; padding:0 4px 16px !important; border:0 !important;
+  border-radius:0 !important; background:transparent !important; box-shadow:none !important;
+}
+@media(max-width:420px) {
+  #kawinCard .kawin-results-categories details.kawin-category-dropdown > summary {
+    min-height:54px !important; padding:13px 2px !important; font-size:11.5px !important;
+  }
+  #kawinCard .kawin-results-categories .kawin-category-dropdown-body { padding:0 2px 14px !important; }
+}
+</style>
+
+
+<style id="kawin-merge-empty-refine">
+#kawinCard .kawin-empty-merge{display:flex;flex-direction:column;gap:7px;margin:10px 0 2px;padding:15px 16px;border:1px solid rgba(148,163,184,.20);border-radius:14px;background:rgba(15,23,42,.32);color:#cbd5e1;text-align:left;font-size:13px;line-height:1.55;font-weight:500;}
+#kawinCard .kawin-empty-merge-title{display:flex;align-items:center;gap:8px;color:#e2e8f0;font-size:14px;font-weight:800;}
+#kawinCard .kawin-empty-merge-title:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#94a3b8;flex:none;}
+#kawinCard .kawin-empty-merge-hint{color:#94a3b8;font-size:12px;line-height:1.45;}
+</style>
+
+<style id="ai-feature-inline-analysis-compact">
+.ai-feature-param-mini-box{
+  width:100%;box-sizing:border-box;margin-top:3px;padding:5px 5px;
+  display:flex;flex-direction:column;gap:2px;text-align:left;
+  background:rgba(15,23,42,.48);border:1px solid rgba(148,163,184,.22);
+  border-radius:8px;color:var(--text-muted);font-size:11px;line-height:1.35;
+  font-weight:600;letter-spacing:0;overflow-wrap:anywhere;
+}
+.ai-feature-param-mini-box span{display:flex;justify-content:space-between;align-items:flex-start;gap:4px}
+.ai-feature-param-mini-box b{color:var(--text-main);font-weight:800;text-align:right}
+.ai-feature-param-compact-note{font-size:11px!important;line-height:1.4!important;margin-top:8px!important;padding-top:7px!important}
+@media(max-width:420px){
+ .ai-feature-param-mini-box{font-size:8px;padding:5px 4px;gap:3px;margin-top:6px}
+ .ai-feature-param-compact-note{font-size:11px!important}
+}
+</style>
+
 </head>
 <body>
 <div class="container">
@@ -1656,10 +1740,11 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
             <button class="btn-refresh-sm" id="btnRefresh" onclick="ambilData()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></button>
         </div>
     </div>
-        <div class="section-card" style="padding:14px 16px;margin-bottom:14px">
+    <div id="twinAlertMount" aria-live="polite"></div>
+        <div class="section-card" id="analyticModeCard" style="padding:14px 16px;margin-bottom:14px">
             <label style="display:block;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">MODE ANALISIS</label>
             <button type="button" class="mode-picker-trigger" id="analyticModeTrigger" onclick="openAnalyticModeModal()" aria-haspopup="dialog" aria-controls="analyticModeModal"><span class="mode-picker-icon" id="analyticModeIcon">✦</span><span class="mode-picker-copy"><b id="analyticModeValue">Auto Adaptive</b><small id="analyticModeDescription">Sistem memilih mode secara otomatis</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
-            <div id="analyticModeHint" style="font-size:10px;color:var(--text-muted);margin-top:7px;line-height:1.45">Sistem memilih pendekatan per posisi dari evaluasi histori 30/50/100 hasil; perlu minimal dua jendela valid.</div>
+            <div id="analyticModeHint" class="mode-picker-hint">Menilai histori 30/50/100 hasil. Perlu minimal dua jendela konsisten; jika data belum cukup, memakai Smart. Skor relatif, bukan probabilitas.</div>
         </div>
     <div class="market-modal" id="marketPickerModal" role="dialog" aria-modal="true" aria-labelledby="marketModalTitle" onclick="if(event.target===this)closeMarketModal()">
         <div class="market-modal-panel">
@@ -1687,7 +1772,7 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
             <div class="ai-feature-desc" id="aiFeatureDescription">Dianalisis dari histori hasil yang tersedia. Diperbarui mengikuti data terbaru.</div>
             <div class="ai-feature-bbfs-label">Angka Pilihan · 6 Digit</div>
             <div class="ai-feature-bbfs" id="aiFeatureBBFS"><span class="ai-feature-desc">Menyiapkan analisis...</span></div>
-            
+
         </section>
         <div class="ai-feature-generate-wrap"><button type="button" class="ai-feature-generate" onclick="openAIGenerator()">GENERATE PREDIKSI AI</button></div>
         <div id="aiOutput"></div>
@@ -1716,26 +1801,19 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
                     </div>
                     <div class="kawin-results-categories" id="kawinResultsCategories" style="display:none;">
                         <section class="kawin-history-section" id="kawinPatternCard" aria-labelledby="kawinPatternHeading">
-                            <div class="kawin-category-heading">
-                                <div class="kawin-section-kicker" id="kawinPatternHeading">KATEGORI 1 · KAWIN SILANG POLA HISTORIS</div>
-                            </div>
-                            <details class="kawin-category-dropdown"><summary><span>Kawin Silang Pola Historis</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
+                            <details class="kawin-category-dropdown"><summary><span class="kawin-section-kicker" id="kawinPatternHeading">KATEGORI 1 · KAWIN SILANG POLA HISTORIS</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
                             <p class="kawin-section-description">Mencari pola dari 10 hasil target terakhir berdasarkan urutan relatif histori setiap pasaran, lalu menerapkan seluruh pola ke hasil terbaru setiap pasaran sumber.</p>
                             <div class="kawin-history-toolbar"><span id="kawinPatternTarget">Target: —</span><span>10 histori → pola posisi → hasil terbaru</span></div>
                             <div id="kawinPatternOutput" aria-live="polite"><div class="empty-state" style="padding:14px 8px">Hasil analisis pola dinamis akan muncul setelah tombol Generate ditekan.</div></div></div></details>
                         </section>
                         <section class="kawin-auto-results" id="kawinAutoResults">
-                            <div class="kawin-category-heading">
-                                <div class="kawin-section-kicker">KATEGORI 2 · KAWIN SILANG TREN DIGIT</div>
-                            </div>
-                            <details class="kawin-category-dropdown"><summary><span>Kawin Silang Tren Digit</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
-                            <p class="kawin-section-description">Digit kandidat diambil hanya dari hasil terbaru seluruh pasaran. Kategori Panas/Sedang/Dingin dihitung dari maksimal 30 histori sebelumnya, dinormalisasi per pasaran dan jumlah slot digit. Minimal 1 digit Panas dan maksimal 1 digit Dingin; pengulangan diperbolehkan.</p>
+                            <details class="kawin-category-dropdown"><summary><span class="kawin-section-kicker">KATEGORI 2 · KAWIN SILANG TREN DIGIT</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
+                            <p class="kawin-section-description">Digit kandidat diambil hanya dari hasil terbaru seluruh pasaran. Kategori Panas/Sedang/Dingin dihitung dari maksimal 10 histori sebelumnya, dinormalisasi per pasaran dan jumlah slot digit. Minimal 1 digit Panas dan maksimal 1 digit Dingin; pengulangan diperbolehkan.</p>
                             <div id="kawinOutput"></div></div></details>
                         </section>
-                        <section class="kawin-history-section" id="kawinSelectionCard" style="margin-top:14px" aria-labelledby="kawinSelectionHeading">
-                            <div class="kawin-category-heading"><div class="kawin-section-kicker" id="kawinSelectionHeading">HASIL GABUNGAN 2 KATEGORI</div></div>
-                            <details class="kawin-category-dropdown"><summary><span>Hasil Gabungan 2 Kategori</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
-                            <p class="kawin-section-description">Menggabungkan kandidat Kawin Silang Pola Historis dan Kawin Silang Tren Digit, menghapus duplikasi, lalu memberi skor berdasarkan dukungan lintas kategori, pola, dan konsistensi posisi. Skor mengukur konsistensi metode, bukan peluang pasti.</p>
+                        <section class="kawin-history-section" id="kawinSelectionCard" aria-labelledby="kawinSelectionHeading">
+                            <details class="kawin-category-dropdown"><summary><span class="kawin-section-kicker" id="kawinSelectionHeading">HASIL IRISAN 2 KATEGORI</span><svg class="kawin-category-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary><div class="kawin-category-dropdown-body">
+                            <p class="kawin-section-description">Menampilkan angka 4D yang muncul pada kedua kategori: Kategori 1 (Pola Historis) dan Kategori 2 (Tren Digit). Hanya angka yang sama persis di kedua kategori yang ditampilkan. Tidak ada skor atau peringkat gabungan.</p>
                             <div id="kawinSelectionOutput"><div class="empty-state">Hasil prioritas akan muncul setelah Generate selesai.</div></div></div></details>
                         </section>
                     </div>
@@ -1787,7 +1865,7 @@ input::placeholder,textarea::placeholder{color:#64748b!important}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                 <span class="section-card-header-text">Cek Mode AI</span>
             </div>
-            <p style="font-size:11px;color:var(--text-muted);line-height:1.6;margin:14px 0 12px">Menguji cara kerja logika 7 mode AI, BBFS, kombinasi 2D/3D/4D, kalibrasi, validasi, dan penanganan data ekstrem. Tidak membandingkan angka prediksi, Top 3, skor keluaran, atau hasil undian.</p>
+            <p style="font-size:11px;color:var(--text-muted);line-height:1.6;margin:14px 0 12px">Menguji rumus enam mode manual pada beberapa skenario input, jalur Auto Adaptive, BBFS, kombinasi 2D/3D/4D, kalibrasi, dan validasi. Tidak menilai akurasi hasil undian.</p>
             <button class="pred-backtest" onclick="jalankanUjiMode()" style="margin-bottom:14px">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
                 <span>Test Ulang</span>
@@ -1887,7 +1965,7 @@ const ANALYTIC_MODE_KEYS=['smart','aggressive','safe','balanced','sniper','misti
 const MODE_NAMES={smart:'Smart',aggressive:'Agresif',safe:'Safe',balanced:'Balance',sniper:'Sniper',mistik:'Neo-Mistik (hiburan)',auto:'Auto Adaptive',tarung:'Tarung'};
 function normalizeMarket(mk){return LEGACY_ALIAS[mk]||mk;}
 function getCurrentAnalyticMode(){return selectedAnalyticMode||'smart';}
-const MODE_DESCRIPTIONS={auto:'Memilih mode per posisi dari evaluasi walk-forward 30/50/100 hasil',smart:'Analisis gabungan dengan pembobotan seimbang',aggressive:'Lebih menekankan momentum terbaru',safe:'Mengutamakan frekuensi dan recency; cenderung kontrarian terhadap momentum',balanced:'Pembobotan fitur yang merata',sniper:'Memperkuat sinyal yang saling mendukung',mistik:'Pola pasangan numerik untuk hiburan'};
+const MODE_DESCRIPTIONS={auto:'Pemilihan otomatis per posisi',smart:'Analisis gabungan dengan pembobotan seimbang',aggressive:'Lebih menekankan momentum terbaru',safe:'Mengutamakan frekuensi dan recency; cenderung kontrarian terhadap momentum',balanced:'Pembobotan fitur yang merata',sniper:'Memperkuat sinyal yang saling mendukung',mistik:'Pola pasangan numerik untuk hiburan'};
 const MODE_ICONS={
 auto:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l1.8 5 5 1.8-5 1.8-1.8 5-1.8-5-5-1.8 5-1.8 1.8-5z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8L19 21.5l-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg>',
 smart:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/></svg>',
@@ -1903,7 +1981,7 @@ function renderAnalyticModeOptions(){const list=document.getElementById('analyti
 function openAnalyticModeModal(){renderAnalyticModeOptions();const m=document.getElementById('analyticModeModal');if(m){m.classList.add('show');document.body.style.overflow='hidden';}}
 function closeAnalyticModeModal(){const m=document.getElementById('analyticModeModal');if(m)m.classList.remove('show');document.body.style.overflow='';}
 function setAnalyticMode(mode){if(!['smart','aggressive','safe','balanced','sniper','mistik','auto'].includes(mode))mode='auto';selectedAnalyticMode=mode;storageSet(ANALYTIC_MODE_STORAGE_KEY,mode);syncAnalyticModePicker();closeAnalyticModeModal();renderAIAnalytic();}
-function syncAnalyticModePicker(){const mode=getCurrentAnalyticMode();const v=document.getElementById('analyticModeValue');if(v)v.textContent=MODE_NAMES[mode]||'Auto Adaptive';const d=document.getElementById('analyticModeDescription');if(d)d.textContent=MODE_DESCRIPTIONS[mode]||MODE_DESCRIPTIONS.auto;const i=document.getElementById('analyticModeIcon');if(i)i.innerHTML=MODE_ICONS[mode]||MODE_ICONS.auto;const h=document.getElementById('analyticModeHint');if(h)h.textContent=mode==='auto'?'Sistem memilih pendekatan per posisi dari evaluasi histori 30/50/100 hasil; jika data belum cukup, kembali ke Smart.':'Mode manual aktif: karakter mode dipertahankan dan tidak diganti otomatis.';}
+function syncAnalyticModePicker(){const mode=getCurrentAnalyticMode();const v=document.getElementById('analyticModeValue');if(v)v.textContent=MODE_NAMES[mode]||'Auto Adaptive';const d=document.getElementById('analyticModeDescription');if(d)d.textContent=MODE_DESCRIPTIONS[mode]||MODE_DESCRIPTIONS.auto;const i=document.getElementById('analyticModeIcon');if(i)i.innerHTML=MODE_ICONS[mode]||MODE_ICONS.auto;const h=document.getElementById('analyticModeHint');if(h)h.textContent=mode==='auto'?'Menilai histori 30/50/100 hasil. Perlu minimal dua jendela konsisten; jika data belum cukup, memakai Smart. Skor relatif, bukan probabilitas.':'Mode manual aktif: '+(MODE_NAMES[mode]||'pilihan Anda')+' digunakan tanpa pergantian otomatis. Skor bersifat relatif, bukan probabilitas.';}
 
 function getMarketConf(mk){return MARKETS[normalizeMarket(mk||activeMarket)]||MARKETS.totomacau4d;}
 function getDigits(mk){return getMarketConf(mk).digits;}
@@ -1921,7 +1999,21 @@ function parseKawinDate(value){
     }
     const text=String(value).trim();if(!text)return null;
     let m=text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})(?:$|[ T])/);
-    if(m){const y=Number(m[1]),mo=Number(m[2]),day=Number(m[3]);const d=new Date(y,mo-1,day);if(d.getFullYear()!==y||d.getMonth()!==mo-1||d.getDate()!==day)return null;return d;}
+    if(m){
+        const y=Number(m[1]),mo=Number(m[2]),day=Number(m[3]);
+        const calendarDate=new Date(y,mo-1,day);
+        if(calendarDate.getFullYear()!==y||calendarDate.getMonth()!==mo-1||calendarDate.getDate()!==day)return null;
+        // Jika input memuat waktu, pertahankan timestamp aslinya; jangan dipotong ke tengah malam.
+        if(text.length>10){
+            const hasZone=/(?:Z|[+-]\d{2}:?\d{2})$/i.test(text);
+            const timestampText=hasZone?text:text.replace(' ','T')+'+07:00';
+            const timed=new Date(timestampText);
+            // Jangan menurunkan datetime yang rusak menjadi tanggal valid pukul 00:00:
+            // itu akan membuat event tampak memiliki timestamp yang dapat dipercaya.
+            return Number.isFinite(timed.getTime())?timed:null;
+        }
+        return calendarDate;
+    }
     m=text.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
     if(m){const day=Number(m[1]),mo=Number(m[2]),y=Number(m[3]);const d=new Date(y,mo-1,day);if(d.getFullYear()!==y||d.getMonth()!==mo-1||d.getDate()!==day)return null;return d;}
     const parsed=new Date(text);return Number.isFinite(parsed.getTime())?parsed:null;
@@ -1951,6 +2043,12 @@ function normalizeMarketPayload(raw,market){
     return{values:records.map(function(r){return r.value;}),date:latestDate};
 }
 function formatKawinLocalDate(date){return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');}
+function formatKawinJakartaDate(date){
+    if(!(date instanceof Date)||!Number.isFinite(date.getTime()))return null;
+    const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jakarta',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
+    const values={};parts.forEach(function(part){values[part.type]=part.value;});
+    return values.year+'-'+values.month+'-'+values.day;
+}
 function getExternalMarketDate(data,rawKey,marketKey){
     const maps=[data&&data.marketDates,data&&data.dates,data&&data.resultDates,data&&data.tanggal];
     for(let i=0;i<maps.length;i++){const map=maps[i];if(!map||typeof map!=='object')continue;const value=map[rawKey]??map[marketKey];if(value!==undefined&&value!==null){if(typeof value==='object')return value.date??value.tanggal??value.updatedAt??value.timestamp??null;return value;}}
@@ -1981,17 +2079,29 @@ function showToast(msg,isSuccess,isError){
     clearTimeout(statusTimer);
     if(isSuccess||isError)statusTimer=setTimeout(function(){statEl.classList.remove("show");},2500);
 }
+function syncSharedInputExtras(tab){
+    // Input selalu tampil. Mode hanya di Prediksi; Twin tampil di Prediksi dan Histori.
+    const showModeCard = tab === 'prediksi';
+    const showTwinNotice = tab === 'prediksi' || tab === 'history';
+    const modeCard = document.getElementById('analyticModeCard');
+    const twinMount = document.getElementById('twinAlertMount');
+    if (modeCard) modeCard.style.display = showModeCard ? '' : 'none';
+    if (twinMount) twinMount.style.display = showTwinNotice ? '' : 'none';
+}
 function switchContentTab(tab){
     if(!tab||tab===activeContentTab)return;
     activeContentTab=tab;
     document.querySelectorAll('.bottom-nav-btn').forEach(function(t){t.classList.toggle('active',t.dataset.tab===tab);});
     document.querySelectorAll('.tab-content').forEach(function(el){el.classList.toggle('hidden',el.id!=='tab-'+tab);});
+    syncSharedInputExtras(tab);
     if(typeof updateNavSlider==='function')updateNavSlider();
     if(tab==='backtest'){setTimeout(function(){if(typeof maybeAutoBacktest==='function')maybeAutoBacktest();},80);}
     if(tab==='cekmode'){setTimeout(function(){if(typeof maybeAutoUjiMode==='function')maybeAutoUjiMode();},80);}
     // Pindah tab langsung kembali ke bagian paling atas tanpa animasi scroll.
     window.scrollTo({top:0,behavior:'instant'});
 }
+// Atur visibilitas awal sesuai tab yang aktif.
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', function(){ syncSharedInputExtras(activeContentTab || 'prediksi'); }, {once:true}); } else { syncSharedInputExtras(activeContentTab || 'prediksi'); }
 function getPendingSubmission(){
     const key='paitoPendingSubmission';
     let pending=null;
@@ -2287,19 +2397,16 @@ function capturePredictionRecord(marketKey,angkaBaru,requestId,eventId){
         // pada apakah pengguna pernah membuka panel Kawin Silang.
         try{generateAllKawin();}catch(kawinCaptureError){console.warn('[pred] hitung snapshot Kawin Silang gagal:',kawinCaptureError);}
         try{renderKawinCombinedSelection();}catch(combinedCaptureError){console.warn('[pred] gabungan snapshot gagal:',combinedCaptureError);}
-        // Ambil ranking dari struktur data mesin, bukan membaca ulang teks DOM.
+        // Simpan seluruh irisan dua kategori; tidak ada ranking/skor gabungan.
         const combinedRanked=Array.isArray(window.__kawinCombinedRanked)?window.__kawinCombinedRanked:[];
-        const selection=combinedRanked.slice(0,10).map(function(item,index){
-            return{rank:index+1,number:String(item.number||''),score:Number(item.score)||0,
-                categoryCount:Number(item.categoryCount)||0,patternPoints:Number(item.patternPoints)||0,
-                positionPoints:Number(item.positionPoints)||0,positionSupport:Number(item.positionSupport)||0,
-                supports:Array.isArray(item.supports)?item.supports.map(function(x){return{category:Number(x.category)||0,count:Number(x.count)||0,positionSupport:Number(x.positionSupport)||0};}):[]};
+        const selection=combinedRanked.map(function(item,index){
+            return{rank:index+1,number:String(item.number||''),categoryCount:2,
+                support1:Number(item.support1)||0,marketSupport2:Number(item.marketSupport2)||0};
         }).filter(function(item){return /^\d{4}$/.test(item.number);});
-        // Simpan kandidat dan metadata dukungannya. Angka saja tidak cukup untuk
-        // merekonstruksi urutan/ranking dan keterangan dukungan pada menu Histori.
+        // Simpan kandidat dan metadata dukungannya agar status pada menu Histori dapat diperiksa.
         function packCandidates(list,limit){return(Array.isArray(list)?list:[]).slice(0,limit).map(function(x){
             return{number:String(x.number||''),support:Number(x.support)||1,
-                positionSupport:Number(x.positionSupport)||0,pairCount:Number(x.pairCount)||0,
+                marketSupport:Number(x.marketSupport)||0,positionSupport:Number(x.positionSupport)||0,pairCount:Number(x.pairCount)||0,
                 patterns:Array.isArray(x.patterns)?x.patterns.slice(0,30):[],
                 score:Number(x.score)||null,category:x.category||null};
         }).filter(function(x){return /^\d{4}$/.test(x.number);});}
@@ -2590,14 +2697,23 @@ function renderAIFeatureCard(){
         const score=Math.max(0,Math.min(100,Math.round((Number(item.score)||0)*100)));
         const cls=score<50?'danger':score<65?'warn':'strong';
         const lastText=gap===0?'Terbaru':gap+' hasil lalu';
-        return '<div class="ai-feature-digit-card"><div class="ai-feature-param-label"></div><div class="ai-feature-digit">'+d+'</div><div class="ai-feature-param-track"><div class="ai-feature-param-fill '+cls+'" style="width:'+score+'%"></div></div><div class="ai-feature-param-score">'+score+' <span>Skor</span></div><div class="ai-feature-param-meta">Freq <b>'+Number(item.frequency||0)+'</b> · '+lastText+'</div></div>';
+        const rr=(recent[d]+0.5)/(digitCount*recentN+5);
+        const pr=priorN?(prior[d]+0.5)/(digitCount*priorN+5):null;
+        const momentum=priorN?(rr>pr*1.05?'Menguat':(rr<pr*0.95?'Melemah':'Stabil')):'Data terbatas';
+        return '<div class="ai-feature-digit-card">'+
+            '<div class="ai-feature-param-label"></div>'+
+            '<div class="ai-feature-digit">'+d+'</div>'+
+            '<div class="ai-feature-param-track"><div class="ai-feature-param-fill '+cls+'" style="width:'+score+'%"></div></div>'+
+            '<div class="ai-feature-param-mini-box">'+
+            '<span>Skor <b>'+score+'</b></span>'+
+            '<span>Freq <b>'+Number(item.frequency||0)+'</b></span>'+
+            '<span>Terakhir <b>'+lastText+'</b></span>'+
+            '<span>Momentum <b>'+momentum+'</b></span>'+
+            '</div></div>';
     }).join('');
     digits.innerHTML=topCards+
         '<div class="ai-feature-param-legend" style="grid-column:1/-1"><span><i class="weak"></i>Lemah</span><span><i class="medium"></i>Sedang</span><span><i class="strong"></i>Kuat</span></div>'+
-        '<details class="ai-feature-param-detail" style="grid-column:1/-1">'+
-        '<summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span>Detail Analisa Angka Pilihan</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></summary>'+
-        '<div class="ai-feature-param-detail-body"><div class="ai-feature-param-detail-grid">'+detailCards+'</div>'+
-        '<div class="ai-feature-param-detail-note"><b>Angka cadangan:</b> '+(reserve||'—')+'<br>Skor adalah nilai relatif dari peringkat angka. Frekuensi dihitung dari histori aktif. Terakhir menunjukkan jarak hasil sejak digit terakhir muncul. Momentum membandingkan periode terbaru dengan periode sebelumnya. Tidak ada parameter posisi AS, KOP, KEPALA, atau EKOR.</div></div></details>';
+        '<div class="ai-feature-param-detail-note ai-feature-param-compact-note" style="grid-column:1/-1"><b>Angka cadangan:</b> '+(reserve||'—')+' · Skor relatif dari peringkat angka; frekuensi dan jarak terakhir dihitung dari histori aktif.</div>';
 }
 function openAIGenerator(){
     __aiGeneratorCandidateIndex=0;
@@ -2664,14 +2780,15 @@ function regenerateAIGenerator(){
 function renderAIAnalytic(){
     const data=getActiveData();const output=document.getElementById('aiOutput');
     if(!output)return;
+    const twinMount=document.getElementById('twinAlertMount');if(twinMount)twinMount.innerHTML='';
     renderAIFeatureCard();
     if(loadError&&data.length===0){output.innerHTML='<div class="pred-card"><div class="empty-state" style="padding:24px 8px;">⚠️ '+escapeHtml(loadError)+'<br><br><button class="page-btn" onclick="ambilData()">Coba Lagi</button></div></div>';return;}
     if(!dataLoadedOnce&&data.length===0){output.innerHTML='<div class="pred-card"><div class="skeleton" style="height:80px;margin-top:12px"></div><div class="skeleton" style="height:80px;margin-top:8px"></div></div>';return;}
     if(data.length===0){output.innerHTML='<div class="pred-card"><div class="empty-state" style="padding:24px 8px;">Belum ada data '+escapeHtml(marketLabels[activeMarket]||activeMarket)+'. Tarik data dulu.</div></div>';return;}
     const twinInfo=detectTwin(data,AUTO_SAMPLE);
+    if(twinMount)twinMount.innerHTML=twinInfo?buildTwinAlertHTML(twinInfo):'';
     const mode=getCurrentAnalyticMode();const r=hitungAIAnalytic(data,AUTO_SAMPLE,mode);
     let html='';
-    if(twinInfo)html+=buildTwinAlertHTML(twinInfo);
     html+=buildAIHTML(r,mode);
     html+=buildTarungHTML();
     output.innerHTML=html;
@@ -2901,31 +3018,23 @@ function getCachedCalibration(market,pos,limit){market=normalizeMarket(market||a
 function invalidateCalibrationCache(){__calibrationCache.clear();}
 function predictPosition(dataArray,mode,pos,limit,presetCalibration){
     if(mode==='auto'){
-        // Backtest dapat memasok hitungan kalibrasi prefix yang sudah dihitung;
-        // prediksi live memakai cache untuk menghindari perhitungan berulang.
+        // Auto memakai kalibrasi walk-forward; jika bukti belum cukup, kembali ke Smart.
         const counts=presetCalibration||(dataArray===marketData[activeMarket]?getCachedCalibration(activeMarket,pos,limit):computeCalibrationCounts(dataArray,pos,limit));
         const chosen=pickCalibration(counts,'smart');
-        // Auto hanya boleh berpindah mode setelah seluruh mode melewati ambang
-        // minimum kalibrasi yang sama; jika belum cukup, fallback ke Smart.
         const selected=chosen.tests>=MIN_CALIBRATION_TESTS?chosen.mode:'smart';
         return predictPositionBase(dataArray,selected,pos,limit).map(function(x){return Object.assign({},x,{selectedMode:selected,adaptive:true,autoSelected:true});});
     }
-    const base=predictPositionBase(dataArray,mode,pos,limit);if(!base.length)return[];
-    // Manual mode is deliberately locked to its own scoring identity.
-    if(!presetCalibration){return base.map(function(x){return Object.assign({},x,{selectedMode:mode,adaptive:false});});}
-    // Backtest-only path: retain the existing adaptive blend so its historical impact remains measurable.
-    const calibration=presetCalibration;
-    if(calibration.mode===mode||calibration.tests<4){return base.map(function(x){return Object.assign({},x,{selectedMode:mode,adaptive:false});});}
-    const companion=predictPositionBase(dataArray,calibration.mode,pos,limit);
-    const baseRank=new Map(base.map(function(x,i){return[x.digit,i];}));const compRank=new Map(companion.map(function(x,i){return[x.digit,i];}));
-    return base.map(function(x){const a=1-(baseRank.get(x.digit)||0)/10;const b=1-(compRank.get(x.digit)||0)/10;return Object.assign({},x,{rankScore:0.78*a+0.22*b,selectedMode:calibration.mode,adaptive:true});}).sort(function(a,b){return b.rankScore-a.rankScore||b.frequency-a.frequency||a.gap-b.gap||a.digit-b.digit;});
+    // Mode manual harus murni: hasilnya hanya berasal dari bobot mode yang dipilih.
+    // Kalibrasi mode lain tidak boleh mengubah ranking manual, termasuk saat Backtest.
+    const base=predictPositionBase(dataArray,mode,pos,limit);
+    return base.map(function(x){return Object.assign({},x,{selectedMode:mode,adaptive:false,autoSelected:false});});
 }
 function getBacktestPositionPredictions(dataArray,mode,pos,limit,calibrationCounts){
     if(mode==='auto'){
         return{adaptive:predictPosition(dataArray,'auto',pos,limit,calibrationCounts),base:predictPositionBase(dataArray,'smart',pos,limit),baseMode:'smart'};
     }
-    const calibration=pickCalibration(calibrationCounts||computeCalibrationCounts(dataArray,pos,limit),mode);
-    return{adaptive:predictPosition(dataArray,mode,pos,limit,calibration),base:predictPositionBase(dataArray,mode,pos,limit),baseMode:mode};
+    const pure=predictPosition(dataArray,mode,pos,limit);
+    return{adaptive:pure,base:pure,baseMode:mode};
 }
 function hitungAIAnalytic(dataArray,limit,mode){
     const data=resolveLimit(dataArray,limit);const digits=getDigits();
@@ -2990,7 +3099,6 @@ function buildTarungHTML(){
 }
 
 
-
 function buildRankedCombinationCard(title,pred,k,description){
     let html='<div class="pred-card pred-2d-card pred-ranked-card"><div class="pred-header"><div class="pred-title-wrap"><span class="live-dot"></span><span class="pred-title">Prediksi '+title+'</span></div><span class="pred-ranked-meta">'+(pred?pred.totalCandidates:0)+' kandidat</span></div>';
     if(pred&&pred.top5&&pred.top5.length){
@@ -3008,13 +3116,6 @@ function buildAIHTML(r,mode){
     const pred2d=hitungPrediksi2D(data,AUTO_SAMPLE,mode,bbfs,positionRankings);
     const modeLabel=MODE_NAMES[mode]||MODE_NAMES.smart;
     let html='';
-    let autoDetail='';
-    if(mode==='auto'&&r&&Array.isArray(r.adaptiveModes)){
-        const labels=getPositions();
-        autoDetail='<div class="pred-ranked-description" style="margin-bottom:8px">Mode terpilih per posisi: '+r.adaptiveModes.map(function(selected,index){return '<b>'+escapeHtml(labels[index]||('Posisi '+(index+1)))+'</b> '+escapeHtml(MODE_NAMES[selected]||selected);}).join(' · ')+'<br>Auto mengevaluasi histori secara walk-forward pada jendela 30/50/100 hasil; minimal dua jendela harus tersedia dan konsisten sebelum berpindah dari Smart.</div>';
-    }
-    html+=autoDetail;
-    html+='<div class="pred-ranked-description" style="margin-bottom:8px">Mode aktif: <b>'+escapeHtml(modeLabel)+'</b> · BBFS, 2D, 3D, dan 4D memakai ranking mode ini. Skor bersifat relatif, bukan probabilitas.</div>';
     html+=buildRankedCombinationCard('4D',pred4d,4,'Kombinasi 4 digit dari BBFS 6D. Skor digit mengikuti posisi AS, KOP, KEPALA, dan EKOR serta dukungan histori.');
     html+=buildRankedCombinationCard('3D',pred3d,3,'Kombinasi 3 digit dari BBFS 6D dengan skor sesuai tiga posisi terakhir dan dukungan histori.');
     html+=buildRankedCombinationCard('2D',pred2d,2,'Kombinasi 2 digit dari BBFS 6D dengan skor sesuai dua posisi terakhir dan dukungan histori.');
@@ -3047,7 +3148,7 @@ function hasVerifiedChronologicalHistory(market,data){
             if(!previous||!previous.day||current.day<previous.day)return false;
             // Dua hasil pada hari yang sama harus memiliki jam/timestamp agar urutannya dapat diverifikasi.
             if(current.day===previous.day&&(current.kind!=='exact'||previous.kind!=='exact'))return false;
-            if(current.day===previous.day&&current.ms<previous.ms)return false;
+            if(current.day===previous.day&&current.ms<=previous.ms)return false;
         }
     }
     return true;
@@ -3290,19 +3391,27 @@ function getKawinSnapshot(marketKey,angka,occurrence,requestId){
     return usable.length>=2?normalized:null;
 }
 function getKawinData(){
-    const today=new Date();today.setHours(0,0,0,0);
     return KAWIN_MARKET_KEYS.map(function(key){
         const data=marketData[key]||[];const lastResult=data.length>0?String(data[data.length-1]):'';
         const meta=marketMeta[key]||{};const parsed=parseKawinDate(meta.latestDate);const sync=marketSyncStatus[key]||{};
         const syncStale=['stale','error','partial'].includes(sync.status);
         let ageDays=null,freshnessScore=null,ageLabel='Umur data tidak diketahui',isStale=false;
-        if(parsed){parsed.setHours(0,0,0,0);const delta=Math.floor((today.getTime()-parsed.getTime())/86400000);if(delta<0){ageLabel='Tanggal di masa depan';freshnessScore=0;ageDays=delta;isStale=true;}else{ageDays=delta;freshnessScore=Math.round(100*Math.pow(0.8,ageDays));isStale=ageDays>KAWIN_STALE_AFTER_DAYS;ageLabel=ageDays===0?'Hari ini':ageDays===1?'1 hari lalu':ageDays+' hari lalu'+(isStale?' · data lama':'');}}
+        if(parsed){const delta=kawinDayDiff(meta.latestDate);if(delta!==null){if(delta<0){ageLabel='Tanggal di masa depan';freshnessScore=0;ageDays=delta;isStale=true;}else{ageDays=delta;freshnessScore=Math.round(100*Math.pow(0.8,ageDays));isStale=ageDays>KAWIN_STALE_AFTER_DAYS;ageLabel=ageDays===0?'Hari ini':ageDays===1?'1 hari lalu':ageDays+' hari lalu'+(isStale?' · data lama':'');}}}
         if(syncStale){isStale=true;freshnessScore=0;ageLabel='Belum diperbarui pada sinkronisasi terakhir';}
-        return{key:key,label:marketLabels[key]||key,value:lastResult,resultDate:parsed?formatKawinLocalDate(parsed):null,ageDays:ageDays,freshnessScore:freshnessScore,ageLabel:ageLabel,dateKnown:!!parsed,isStale:isStale,syncStatus:sync.status||'not-loaded'};
+        return{key:key,label:marketLabels[key]||key,value:lastResult,resultDate:parsed?(/^\d{4}-\d{2}-\d{2}$/.test(String(meta.latestDate||'').trim())?String(meta.latestDate).trim():(/^\d{1,2}[/-]\d{1,2}[/-]\d{4}$/.test(String(meta.latestDate||'').trim())?formatKawinLocalDate(parsed):formatKawinJakartaDate(parsed))):null,ageDays:ageDays,freshnessScore:freshnessScore,ageLabel:ageLabel,dateKnown:!!parsed,isStale:isStale,syncStatus:sync.status||'not-loaded'};
     });
 }
-function kawinTodayKey(){return formatKawinLocalDate(new Date());}
-function kawinDayDiff(dateKey){if(!dateKey)return null;const d=parseKawinDate(dateKey);if(!d)return null;const today=parseKawinDate(kawinTodayKey());d.setHours(0,0,0,0);today.setHours(0,0,0,0);return Math.floor((today.getTime()-d.getTime())/86400000);}
+function kawinTodayKey(){return formatKawinJakartaDate(new Date());}
+function kawinDayDiff(dateKey){
+    if(!dateKey)return null;
+    const d=parseKawinDate(dateKey);if(!d)return null;
+    const targetText=String(dateKey).trim();
+    const targetKey=/^\d{4}-\d{2}-\d{2}$/.test(targetText)?targetText:(/^\d{1,2}[/-]\d{1,2}[/-]\d{4}$/.test(targetText)?formatKawinLocalDate(d):formatKawinJakartaDate(d));
+    const todayKey=kawinTodayKey();
+    const toUtcDay=function(key){const p=String(key).split('-').map(Number);return p.length===3&&p.every(Number.isFinite)?Date.UTC(p[0],p[1]-1,p[2]):NaN;};
+    const target=toUtcDay(targetKey),today=toUtcDay(todayKey);
+    return Number.isFinite(target)&&Number.isFinite(today)?Math.round((today-target)/86400000):null;
+}
 function getKawinDailySources(){
     const today=kawinTodayKey();
     return KAWIN_MARKET_KEYS.map(function(key){
@@ -3341,7 +3450,7 @@ function uniqueKawinPermutations(chars){
     walk();return out;
 }
 function computeKawinDigitStats(sources){
-    // Tren dihitung dari maksimal 30 histori SEBELUM hasil terbaru.
+    // Tren dihitung dari maksimal 10 histori SEBELUM hasil terbaru.
     // Setiap pasaran dinormalisasi terhadap jumlah slot digitnya, lalu bobot
     // tiap pasaran dirata-ratakan agar hasil 5D tidak mengalahkan hasil 4D.
     const stats=Array.from({length:10},function(_,digit){return{digit:String(digit),rawCount:0,weightedCount:0,marketCount:0,heatScore:0,supportScore:0,latestCount:0,latestMarketCount:0,category:'Sedang'};});
@@ -3349,7 +3458,7 @@ function computeKawinDigitStats(sources){
     (Array.isArray(sources)?sources:[]).forEach(function(source){
         const latest=(Array.isArray(source.latestDraws)?source.latestDraws:[]).filter(function(d){return d&&/^\d{4,5}$/.test(String(d.angka||''));});
         latest.forEach(function(draw){String(draw.angka).split('').forEach(function(ch){const st=stats[Number(ch)];st.latestCount++;if(!st.latestMarkets)st.latestMarkets=new Set();st.latestMarkets.add(source.key);});});
-        const history=(Array.isArray(source.trendDraws)?source.trendDraws:[]).filter(function(d){return d&&/^\d{4,5}$/.test(String(d.angka||''));}).slice(-30);
+        const history=(Array.isArray(source.trendDraws)?source.trendDraws:[]).filter(function(d){return d&&/^\d{4,5}$/.test(String(d.angka||''));}).slice(-10);
         if(!history.length)return;
         const counts=Array(10).fill(0);let totalWeight=0;
         history.forEach(function(draw,index){
@@ -3421,7 +3530,7 @@ function generateKawin(){
 function saveKawinPredictionSnapshot(sources,digitStats,results){
     let history=[];try{const parsed=JSON.parse(localStorage.getItem(KAWIN_PREDICTION_HISTORY_KEY)||'[]');history=Array.isArray(parsed)?parsed.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item);}):[];}catch(e){console.warn('[kawin] history snapshot rusak/tidak dapat dibaca:',e);history=[];}
     if(!Array.isArray(sources))sources=[];if(!Array.isArray(digitStats))digitStats=[];if(!Array.isArray(results))results=[];
-    const now=new Date();const analysisDate=formatKawinLocalDate(now);
+    const now=new Date();const analysisDate=formatKawinJakartaDate(now);
     const signature=KAWIN_ENGINE_VERSION+'|'+analysisDate+'|'+sources.map(function(s){return s.key+':'+(s.draws||[]).map(function(d){return d.eventId||d.angka+'@'+(d.tanggal||'unknown')+' '+(d.jam||'');}).join(',');}).join('|');
     if(history.some(function(item){return item.signature===signature;}))return true;
     history.push({id:Date.now(),engineVersion:KAWIN_ENGINE_VERSION,generatedAt:now.toISOString(),analysisDate:analysisDate,signature:signature,candidateCount:results.length,sources:sources.map(function(s){return{key:s.key,label:s.label,drawCount:s.drawCount,draws:(s.draws||[]).map(function(d){return{angka:d.angka,tanggal:d.tanggal||null,jam:d.jam||null,eventId:d.eventId||null,timeKnown:!!d.timeKnown};}),fallback:!!s.fallback,unknownTime:!!s.unknownTime,ageDays:s.ageDays??null,ageLabel:s.ageLabel,freshnessScore:s.freshnessScore??null};}),digitStats:digitStats.map(function(d){return{digit:d.digit,rawCount:d.rawCount,weightedCount:d.weightedCount,marketCount:d.marketCount,heatScore:d.heatScore,category:d.category};}),candidates:results.slice(0,100).map(function(r,index){return{rank:index+1,number:r.number,score:r.score,category:r.category,pairCount:r.pairCount};})});
@@ -3430,13 +3539,15 @@ function saveKawinPredictionSnapshot(sources,digitStats,results){
 }
 function kawinEventTime(event){
     if(!event)return null;
-    const timestamp=normalizeEventTimestamp(event.timestamp);
+    const dateText=String(event.tanggal||'').trim();
+    const timestamp=normalizeEventTimestamp(event.timestamp)||(/^\d{4}-\d{2}-\d{2}[ T]/.test(dateText)?normalizeEventTimestamp(dateText):null);
     const parsedDay=event.tanggal?parseKawinDate(event.tanggal):null;
-    let day=parsedDay?formatKawinLocalDate(parsedDay):null;
-    if(timestamp!==null){const timestampDate=new Date(timestamp);if(!Number.isFinite(timestampDate.getTime()))return null;day=formatKawinLocalDate(timestampDate);return{kind:'exact',ms:timestamp,day:day};}
+    const dateOnly=/^\d{4}-\d{2}-\d{2}$/.test(dateText)||/^\d{1,2}[/-]\d{1,2}[/-]\d{4}$/.test(dateText);
+    let day=parsedDay?(dateOnly?formatKawinLocalDate(parsedDay):formatKawinJakartaDate(parsedDay)):null;
+    if(timestamp!==null){const timestampDate=new Date(timestamp);if(!Number.isFinite(timestampDate.getTime()))return null;day=formatKawinJakartaDate(timestampDate);return{kind:'exact',ms:timestamp,day:day};}
     if(!day)return null;
     const jam=String(event.jam||'').trim();
-    if(jam){const clock=jam.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);if(clock){const hh=Number(clock[1]),mm=Number(clock[2]),ss=Number(clock[3]||0);if(hh<=23&&mm<=59&&ss<=59){const d=new Date(day+'T'+String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0'));if(Number.isFinite(d.getTime()))return{kind:'exact',ms:d.getTime(),day:day};}}}
+    if(jam){const clock=jam.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);if(clock){const hh=Number(clock[1]),mm=Number(clock[2]),ss=Number(clock[3]||0);if(hh<=23&&mm<=59&&ss<=59){const d=new Date(day+'T'+String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0')+'+07:00');if(Number.isFinite(d.getTime()))return{kind:'exact',ms:d.getTime(),day:day};}}}
     return{kind:'day',day:day};
 }
 function kawinEventBefore(source,target){const a=kawinEventTime(source),b=kawinEventTime(target);if(!a||!b)return false;if(a.day!==b.day)return a.day<b.day;if(a.kind==='exact'&&b.kind==='exact')return a.ms<b.ms;return false;}
@@ -3556,7 +3667,7 @@ function analyzeKawinPatternCategory1(){
             return '<div class="kawin-history-pattern" style="margin-top:5px;padding:8px;border:1px solid var(--border);border-radius:9px"><b>'+positions[posIndex]+' target ('+pattern.target.angka.charAt(posIndex)+')</b><br><span style="color:var(--text-muted)">Pola:</span> '+escapeHtml(options.map(function(o){return o.label+' · '+positions[o.sourcePos];}).join(' + '))+'<br><span style="color:var(--text-muted)">Hasil terbaru:</span> '+escapeHtml(appliedOptions.map(function(o){return o.label+' '+positions[o.sourcePos]+' = '+o.digit;}).join(' · ')||'Sumber terbaru tidak valid')+'</div>';
         }).join('');
         const nums=incomplete?[]:Array.from(new Set(combinations));
-        nums.forEach(function(number){let item=window.__kawinCategory1Candidates.find(function(x){return x.number===number;});if(!item){item={number:number,support:0,positionSupport:0,patterns:[]};window.__kawinCategory1Candidates.push(item);}item.support++;item.positionSupport++;item.patterns.push('Pola '+(patternIndex+1));});
+        nums.forEach(function(number){let item=window.__kawinCategory1Candidates.find(function(x){return x.number===number;});if(!item){item={number:number,support:0,patterns:[]};window.__kawinCategory1Candidates.push(item);}item.support++;item.patterns.push('Pola '+(patternIndex+1));});
         const numsHtml=nums.length?'<div style="margin-top:7px"><b>Kandidat pola '+(patternIndex+1)+':</b> '+escapeHtml(nums.join(', '))+'</div>':'<div class="kawin-history-note">Pola tersimpan, tetapi penerapan ke hasil terbaru tidak lengkap.</div>';
         return '<details class="kawin-history-item" '+(patternIndex===0?'open':'')+' style="margin-top:9px"><summary class="kawin-history-item-head"><div><div class="kawin-history-date">POLA '+(patternIndex+1)+' · DATA HISTORIS '+pattern.index+'</div><div class="kawin-history-number">'+escapeHtml(pattern.target.angka)+'</div></div><span class="kawin-history-status yes">Pola lengkap</span></summary><div class="kawin-history-detail">'+rows+numsHtml+'</div></details>';
     });
@@ -3575,52 +3686,46 @@ function analyzeKawinPatternCategory1(){
 }
 function renderKawinCombinedSelection(){
     const out=document.getElementById('kawinSelectionOutput');if(!out)return;
-    const lists=[
-        Array.isArray(window.__kawinCategory1Candidates)?window.__kawinCategory1Candidates:[],
-        Array.isArray(window.__kawinCategory2Candidates)?window.__kawinCategory2Candidates:[]
-    ];
-    // Kategori 1 menyimpan pola posisi historis; Kategori 2 menyumbang tren digit.
-    const maps=lists.map(function(list,categoryIndex){
+    const category1=Array.isArray(window.__kawinCategory1Candidates)?window.__kawinCategory1Candidates:[];
+    const category2=Array.isArray(window.__kawinCategory2Candidates)?window.__kawinCategory2Candidates:[];
+    // Gabungan sekarang adalah irisan murni: kandidat wajib muncul pada kedua kategori.
+    // Tidak ada skor berbobot atau klaim bahwa dukungan kedua kategori setara skalanya.
+    function makeMap(list,categoryIndex){
         const map=new Map();
-        list.forEach(function(item){
-            const number=String(item.number||'');
+        list.forEach(function(item,index){
+            const number=String(item&&item.number||'');
             if(!/^\d{4}$/.test(number))return;
-            const rawSupport=categoryIndex===1?(Number(item.pairCount)||Number(item.support)||1):(Number(item.support)||1);
-            const support=Math.max(1,Math.floor(rawSupport));
-            const prior=map.get(number)||{number:number,support:0,positionSupport:0};
-            prior.support=Math.max(prior.support,support);
-            if(categoryIndex===0)prior.positionSupport=Math.max(prior.positionSupport,Number(item.positionSupport)||0);
+            const prior=map.get(number)||{number:number,sourceIndex:index,support:0,marketSupport:0};
+            if(categoryIndex===1){
+                prior.support=Math.max(prior.support,Math.max(1,Number(item.support)||1));
+            }else{
+                prior.marketSupport=Math.max(prior.marketSupport,Number(item.marketSupport)||Number(item.pairCount)||0);
+            }
             map.set(number,prior);
         });
         return map;
+    }
+    const map1=makeMap(category1,1),map2=makeMap(category2,2);
+    const shared=[];
+    map1.forEach(function(item,number){
+        const other=map2.get(number);
+        if(!other)return;
+        shared.push({number:number,categoryCount:2,support1:item.support,marketSupport2:other.marketSupport,
+            category1Index:item.sourceIndex,category2Index:other.sourceIndex});
     });
-    const allNumbers=new Set();maps.forEach(function(map){map.forEach(function(_,number){allNumbers.add(number);});});
-    if(!allNumbers.size){out.innerHTML='<div class="empty-state">Belum ada kandidat 4D yang dapat digabungkan dari dua kategori.</div>';return;}
-    const SUPPORT_TARGET=3;
-    const ranked=Array.from(allNumbers).map(function(number){
-        const supports=maps.map(function(map,index){const item=map.get(number);return item?{category:index+1,count:item.support,positionSupport:item.positionSupport||0}:null;}).filter(Boolean);
-        const categoryCount=supports.length;
-        const categoryPoints=(categoryCount/2)*40;
-        // Dukungan pola memakai jumlah pola/pasangan independen dengan ambang absolut.
-        const patternNorm=categoryCount?supports.reduce(function(sum,s){return sum+Math.min(1,s.count/SUPPORT_TARGET);},0)/categoryCount:0;
-        const patternPoints=patternNorm*35;
-        // Bukti posisi hanya berasal dari Kategori 1 (pola historis).
-        const positionEvidence=maps[0].get(number);
-        const positionSupport=positionEvidence?positionEvidence.positionSupport:0;
-        const positionPoints=Math.min(1,positionSupport/SUPPORT_TARGET)*25;
-        const score=Math.round(categoryPoints+patternPoints+positionPoints);
-        return{number:number,score:score,categoryCount:categoryCount,patternPoints:patternPoints,positionPoints:positionPoints,positionSupport:positionSupport,supports:supports};
-    }).sort(function(a,b){
-        return b.score-a.score||b.categoryCount-a.categoryCount||b.patternPoints-a.patternPoints||b.positionPoints-a.positionPoints||a.number.localeCompare(b.number);
-    });
-    window.__kawinCombinedRanked=ranked.slice();
-    const selected=ranked.slice(0,10);
-    const cards=selected.map(function(item,index){
-        const supportText=item.supports.map(function(x){return(x.category===1?'Pola historis':'Tren digit')+' ('+x.count+(x.category===2?' jalur/pasangan':' pola')+')';}).join(' · ');
-        const totalSupport=item.supports.reduce(function(sum,x){return sum+x.count;},0);
-        return '<article class="kawin-all-item kawin-modern-item kawin-selection-item"><div class="kawin-modern-top"><span class="kawin-modern-rank">#'+(index+1)+' · '+(index<3?'Prioritas utama':'Prioritas')+'</span><span class="kawin-modern-score">'+item.score+' <small>/100</small></span></div><div class="kawin-all-number">'+escapeHtml(item.number)+'</div><div class="kawin-modern-summary"><span>'+item.categoryCount+'/2 kategori</span><span>'+totalSupport+' dukungan pola/pasangan</span></div><div class="kawin-all-detail show" style="margin-top:6px"><div class="kawin-all-skor-line">'+escapeHtml(supportText)+'</div><div class="kawin-all-skor-line">Lintas kategori: '+Math.round(item.categoryCount/2*40)+'/40 · Pola: '+Math.round(item.patternPoints)+'/35 · Bukti posisi: '+Math.round(item.positionPoints)+'/25 ('+item.positionSupport+' pola posisi)</div></div></article>';
+    // Urutan numerik hanya untuk tampilan konsisten, bukan peringkat atau skor prediksi.
+    shared.sort(function(a,b){return a.number.localeCompare(b.number);});
+    window.__kawinCombinedRanked=shared.slice();
+    if(!shared.length){
+        out.innerHTML='<div class="kawin-empty-merge"><div class="kawin-empty-merge-title">Belum Ada Irisan</div><div>Belum ditemukan angka 4D yang sama pada Kategori 1 dan Kategori 2.</div><div class="kawin-empty-merge-hint">Kandidat masing-masing kategori tetap dapat dilihat pada bagian di atas.</div></div>';
+        return;
+    }
+    const cards=shared.map(function(item){
+        const support1=item.support1+' pola historis';
+        const support2=item.marketSupport2>0?(Number(item.marketSupport2).toFixed(1).replace(/\.0$/,'')+' dukungan pasar rata-rata'):'tercatat pada daftar tren';
+        return '<article class="kawin-all-item kawin-modern-item kawin-selection-item"><div class="kawin-modern-top"><span class="kawin-modern-rank">IRISAN 2 KATEGORI</span><span class="kawin-modern-score" style="background:rgba(34,197,94,.14);color:#4ade80;border-color:rgba(74,222,128,.3)">COCOK</span></div><div class="kawin-all-number">'+escapeHtml(item.number)+'</div><div class="kawin-modern-summary"><span>Didukung kedua kategori</span></div><div class="kawin-all-detail show" style="margin-top:6px"><div class="kawin-all-skor-line">Kategori 1 · '+escapeHtml(support1)+'</div><div class="kawin-all-skor-line">Kategori 2 · '+escapeHtml(support2)+'</div></div></article>';
     }).join('');
-    out.innerHTML='<div class="kawin-result-note"><b>'+selected.length+' KANDIDAT PRIORITAS DARI '+ranked.length+' ANGKA UNIK</b><br>Skor gabungan: 40% dukungan lintas metode + 35% dukungan pola/tren + 25% bukti posisi historis. Bukti posisi hanya berasal dari Kategori 1. Kandidat duplikat dihitung satu kali; sumber pendukung tetap dicatat. Skor adalah ukuran konsistensi metode, bukan probabilitas hasil.</div><div class="kawin-all-grid">'+cards+'</div><div class="kawin-history-note">Kategori 2 tidak memiliki pemetaan posisi historis eksplisit; komponen posisi tidak diasumsikan.</div>';
+    out.innerHTML='<div class="kawin-result-note"><b>'+shared.length+' ANGKA IRISAN DARI 2 KATEGORI</b><br>Hanya angka yang muncul pada Kategori 1 (Pola Historis) dan Kategori 2 (Tren Digit) yang ditampilkan. Tidak ada skor gabungan, bobot 40:60, atau peringkat buatan. Urutan angka hanya alfabetis/numerik untuk memudahkan pencarian. Angka yang tidak beririsan tetap tersedia pada daftar kategori masing-masing.</div><div class="kawin-all-grid">'+cards+'</div>';
 }
 function generateAllKawin(){
     try{
@@ -3641,7 +3746,7 @@ function generateAllKawin(){
                 if((latest.eventId&&e.eventId===latest.eventId)||(!latest.eventId&&String(e.angka)===String(latest.angka)&&String(e.tanggal||'')===String(latest.tanggal||'')&&String(e.jam||'')===String(latest.jam||''))){latestIndex=i;break;}
             }
             if(latestIndex>=0)ordered.splice(latestIndex,1);
-            return Object.assign({},src,{latestDraws:src.draws.slice(),trendDraws:ordered.slice(-30)});
+            return Object.assign({},src,{latestDraws:src.draws.slice(),trendDraws:ordered.slice(-10)});
         });
         const digitStats=computeKawinDigitStats(trendSources);
         const statMap={};digitStats.forEach(function(d){statMap[d.digit]=d;});
@@ -3672,7 +3777,7 @@ function generateAllKawin(){
         let unique=Array.from(grouped.values());
         unique.sort(function(a,b){return b.score-a.score||b.latestSupport-a.latestSupport||b.latestFrequency-a.latestFrequency||a.number.localeCompare(b.number);});
         const totalUniqueCount=unique.length;unique=unique.slice(0,50);
-        window.__kawinCategory2Candidates=unique.map(function(item){return{number:item.number,support:item.latestFrequency,pairCount:item.latestSupport};});
+        window.__kawinCategory2Candidates=unique.map(function(item){return{number:item.number,support:item.latestFrequency,marketSupport:item.latestSupport};});
         window.__kawinAllResults=unique;
         if(!unique.length){out.innerHTML='<div class="empty-state">Belum ada kandidat yang memenuhi komposisi tren (minimal 1 Panas dan maksimal 1 Dingin). Periksa kembali histori atau hasil terbaru.</div>';renderKawinCombinedSelection();return;}
         const snapshotSources=trendSources.map(function(src){const draws=src.trendDraws.concat(src.latestDraws);return Object.assign({},src,{draws:draws,drawCount:draws.length});});
@@ -3680,18 +3785,19 @@ function generateAllKawin(){
         const hotDigits=digitStats.filter(function(x){return x.category==='Panas';}).map(function(x){return x.digit;}).join(', ');
         const mediumDigits=digitStats.filter(function(x){return x.category==='Sedang';}).map(function(x){return x.digit;}).join(', ');
         const coldDigits=digitStats.filter(function(x){return x.category==='Dingin';}).map(function(x){return x.digit;}).join(', ');
-        const mapHtml='<div class="kawin-all-header"><span>Peta tren digit · 30 histori sebelum hasil terbaru</span></div><div class="kawin-digit-map">'+digitStats.map(function(x){return '<div class="kawin-digit-cell '+(x.category==='Panas'?'hot':x.category==='Dingin'?'cold':'medium')+'"><strong>'+x.digit+'</strong><small>'+x.category+'</small><small>'+x.rawCount+'× histori</small><small>'+x.latestCount+'× terbaru</small></div>';}).join('')+'</div>';
+        const mapHtml='<div class="kawin-all-header"><span>Peta tren digit · 10 histori sebelum hasil terbaru</span></div><div class="kawin-digit-map">'+digitStats.map(function(x){return '<div class="kawin-digit-cell '+(x.category==='Panas'?'hot':x.category==='Dingin'?'cold':'medium')+'"><strong>'+x.digit+'</strong><small>'+x.category+'</small><small>'+x.rawCount+'× histori</small><small>'+x.latestCount+'× terbaru</small></div>';}).join('')+'</div>';
         const sourceLines=allSources.map(function(x){return escapeHtml(x.label)+': '+escapeHtml(x.value);}).join('<br>');
         const historyCount=trendSources.reduce(function(sum,x){return sum+x.trendDraws.length;},0);
-        let html=mapHtml+'<div class="kawin-result-note"><b>SUMBER DIGIT KANDIDAT · hasil terbaru seluruh pasaran</b><br>'+sourceLines+'<br>Digit kandidat: <b>'+escapeHtml(pool.join(', '))+'</b><br><b>Tren historis:</b> maksimal 30 hasil sebelum hasil terbaru per pasaran ('+historyCount+' hasil historis dari '+trendSources.filter(function(x){return x.trendDraws.length>0;}).length+' pasaran). Normalisasi dilakukan per pasaran dan per slot digit agar pasar 4D/5D seimbang.<br><b>Panas:</b> '+escapeHtml(hotDigits||'—')+' · <b>Sedang:</b> '+escapeHtml(mediumDigits||'—')+' · <b>Dingin:</b> '+escapeHtml(coldDigits||'—')+'<br>Aturan kandidat: minimal 1 digit Panas, maksimal 1 digit Dingin, pengulangan digit diperbolehkan. Hasil terbaru hanya menentukan kumpulan digit dan dukungan, bukan skor tren. '+(snapshotSaved?'Snapshot sumber berhasil disimpan.':'<b>Perhatian:</b> snapshot gagal disimpan di browser ini; hasil tetap tersedia sampai halaman ditutup.')+'</div>';
-        html+='<div class="kawin-all-header"><span>HASIL TREN · '+unique.length+' dari '+totalUniqueCount+' kombinasi unik</span><button class="copy-btn kawin-copy-all" onclick="copyAllKawin()" title="Salin semua (urut skor)">Salin Semua</button></div><div class="kawin-all-grid">';
-        unique.forEach(function(r,idx){
+        let html=mapHtml+'<div class="kawin-result-note"><b>SUMBER DIGIT KANDIDAT · hasil terbaru seluruh pasaran</b><br>'+sourceLines+'<br>Digit kandidat: <b>'+escapeHtml(pool.join(', '))+'</b><br><b>Tren historis:</b> maksimal 10 hasil sebelum hasil terbaru per pasaran ('+historyCount+' hasil historis dari '+trendSources.filter(function(x){return x.trendDraws.length>0;}).length+' pasaran). Normalisasi dilakukan per pasaran dan per slot digit agar pasar 4D/5D seimbang.<br><b>Panas:</b> '+escapeHtml(hotDigits||'—')+' · <b>Sedang:</b> '+escapeHtml(mediumDigits||'—')+' · <b>Dingin:</b> '+escapeHtml(coldDigits||'—')+'<br>Aturan kandidat: minimal 1 digit Panas, maksimal 1 digit Dingin, pengulangan digit diperbolehkan. Hasil terbaru hanya menentukan kumpulan digit dan dukungan, bukan skor tren. '+(snapshotSaved?'Snapshot sumber berhasil disimpan.':'<b>Perhatian:</b> snapshot gagal disimpan di browser ini; hasil tetap tersedia sampai halaman ditutup.')+'</div>';
+        const displayTrend=unique.slice(0,10);
+        html+='<div class="kawin-all-header"><span>HASIL TREN · '+displayTrend.length+' ditampilkan dari '+totalUniqueCount+' kombinasi unik</span><button class="copy-btn kawin-copy-all" onclick="copyAllKawin()" title="Salin 50 kandidat yang digunakan untuk irisan (urut skor)">Salin 50 Kandidat</button></div><div class="kawin-all-grid">';
+        displayTrend.forEach(function(r,idx){
             const rankLabel=idx<3?'Unggulan':idx<10?'Pilihan':'Kandidat';
             const scoreLine='<div class="kawin-modern-score-head"><span>Rincian skor relatif</span><b>'+r.score+'/100</b></div><div class="kawin-modern-metrics"><div><span>Kekuatan tren</span><b>'+r.heat+'</b></div><div><span>Kesesuaian komposisi</span><b>'+r.composition+'</b></div><div><span>Dukungan hasil terbaru</span><b>'+r.latestSupport+'</b></div><div><span>Frekuensi digit terbaru</span><b>'+r.latestFrequency+'</b></div></div>';
             html+='<article class="kawin-all-item kawin-modern-item"><div class="kawin-modern-top"><span class="kawin-modern-rank">#'+(idx+1)+' · '+rankLabel+'</span><span class="kawin-modern-score">'+r.score+' <small>SKOR</small></span></div><div class="kawin-all-number">'+r.number+'</div><div class="kawin-modern-category">'+escapeHtml(r.category)+'</div><button type="button" class="kawin-modern-toggle" onclick="toggleKawinAllDetail(this)" aria-expanded="false"><span>Lihat dasar kombinasi</span><span class="kawin-modern-toggle-icon">＋</span></button><div class="kawin-all-detail kawin-modern-detail">'+scoreLine+'</div></article>';
         });
         html+='</div>';
-        if(totalUniqueCount>50)html+='<div class="kawin-result-note">Menampilkan 50 kombinasi teratas dari '+totalUniqueCount+' angka unik.</div>';
+        if(totalUniqueCount>10)html+='<div class="kawin-result-note">Menampilkan 10 kombinasi teratas. Hingga 50 kandidat teratas tetap disimpan sebagai bahan perhitungan irisan Kategori 1 dan Kategori 2. Total hasil unik yang terbentuk: '+totalUniqueCount+'.</div>';
         out.innerHTML=html;
     }catch(generateError){
         console.error("[kawin] generate gagal:",generateError);
@@ -3712,7 +3818,7 @@ function jalankanBacktestKawin(){
     if(dated.length<22){out.innerHTML='<div class="backtest-panel">Diperlukan minimal 22 hasil 4D bertanggal dan berurutan pada '+escapeHtml(label)+'. Data yang dapat diuji: '+dated.length+'.</div>';return;}
     // Hanya gunakan periode yang seluruh sumbernya memiliki waktu yang dapat dibandingkan.
     const firstTest=Math.min(20,Math.max(10,dated.length-1));
-    const totals={1:{tests:0,h5:0,h10:0},2:{tests:0,h5:0,h10:0},3:{tests:0,h5:0,h10:0}};
+    const totals={1:{tests:0,hitAll:0,candidates:0},2:{tests:0,h5:0,h10:0},3:{tests:0,hitAll:0,candidates:0}};
     const examples=[];let skipped=0;
     window.__kawinBacktestRunning=true;btn.disabled=true;btn.innerHTML='<span>MENGUJI...</span>';
     out.innerHTML='<div class="backtest-panel"><b>Walk-forward Kawin Silang · '+escapeHtml(label)+'</b><br><span id="kbtProgress">Menyiapkan histori...</span><div class="progress-bar"><div class="progress-fill" id="kbtProgressBar" style="width:0%"></div></div></div>';
@@ -3735,26 +3841,41 @@ function jalankanBacktestKawin(){
                 window.__kawinCategory1Candidates=[];window.__kawinCategory2Candidates=[];window.__kawinCombinedRanked=[];
                 // Panggil mesin kategori yang sama dengan tombol Generate, pada histori yang dipotong.
                 generateAllKawin();
-                const lists=[window.__kawinCategory1Candidates||[],window.__kawinCategory2Candidates||[],(window.__kawinCombinedRanked||[]).slice(0,10)];
+                const lists=[window.__kawinCategory1Candidates||[],window.__kawinCategory2Candidates||[],window.__kawinCombinedRanked||[]];
                 lists.forEach(function(list,index){
                     const numbers=list.map(function(x){return String(x.number||'');}).filter(function(x){return /^\d{4}$/.test(x);});
                     const unique=Array.from(new Set(numbers));
-                    if(!unique.length)return;
-                    totals[index+1].tests++;
-                    if(unique.slice(0,5).includes(String(target.angka)))totals[index+1].h5++;
-                    if(unique.slice(0,10).includes(String(target.angka)))totals[index+1].h10++;
+                    const total=totals[index+1];
+                    if(index===0||index===2){
+                        // Kategori 1 tidak memiliki ranking; ukur cakupan seluruh kandidat.
+                        // Kategori 1, 2, dan irisan memakai semua periode valid sebagai denominator,
+                        // termasuk periode ketika metode tidak menghasilkan kandidat.
+                        total.tests++;total.candidates+=unique.length;
+                        if(unique.includes(String(target.angka)))total.hitAll++;
+                    }else{
+                        // Kategori 2 sudah diurutkan berdasarkan skor sebelum dipotong TOP 5/TOP 10.
+                        total.tests++;
+                        if(unique.slice(0,5).includes(String(target.angka)))total.h5++;
+                        if(unique.slice(0,10).includes(String(target.angka)))total.h10++;
+                    }
                 });
                 if(examples.length<8||t>=dated.length-3){
-                    examples.push({date:formatKawinHistoryDate(target),actual:String(target.angka),hits:lists.map(function(list){return (list||[]).slice(0,10).some(function(x){return String(x.number||'')===String(target.angka);});})});
+                    examples.push({date:formatKawinHistoryDate(target),actual:String(target.angka),hits:lists.map(function(list,index){
+                        const found=(list||[]).some(function(x){return String(x.number||'')===String(target.angka);});
+                        return index===0||index===2?found:(list||[]).slice(0,10).some(function(x){return String(x.number||'')===String(target.angka);});
+                    })});
                 }
                 const pct=Math.round((t-firstTest+1)/(dated.length-firstTest)*100);const bar=document.getElementById('kbtProgressBar');const progress=document.getElementById('kbtProgress');if(bar)bar.style.width=pct+'%';if(progress)progress.textContent='Menguji '+(t-firstTest+1)+'/'+(dated.length-firstTest)+' periode · '+pct+'%';
                 if((t-firstTest)%1===0)await yieldUI();
             }
             const rate=function(x,k){return x.tests?(100*x[k]/x.tests).toFixed(2)+'%':'—';};
-            const names=['Kategori 1 · Kawin Silang Pola Historis','Kategori 2 · Kawin Silang Tren Digit','Hasil Gabungan 2 Kategori'];
-            const rows=names.map(function(name,i){const x=totals[i+1];return '<tr><td>'+name+'</td><td>'+x.tests+'</td><td>'+x.h5+' ('+rate(x,'h5')+')</td><td>'+x.h10+' ('+rate(x,'h10')+')</td></tr>';}).join('');
+            const names=['Kategori 1 · Kawin Silang Pola Historis','Kategori 2 · Kawin Silang Tren Digit','Irisan · Kandidat yang muncul di kedua kategori'];
+            const rows=names.map(function(name,i){const x=totals[i+1];
+                if(i===0||i===2){const avg=x.tests?(x.candidates/x.tests).toFixed(1):'—';return '<tr><td>'+name+'</td><td>'+x.tests+'</td><td>—</td><td>'+x.hitAll+' ('+rate(x,'hitAll')+') · rata-rata '+avg+' kandidat</td></tr>';}
+                return '<tr><td>'+name+'</td><td>'+x.tests+'</td><td>'+x.h5+' ('+rate(x,'h5')+')</td><td>'+x.h10+' ('+rate(x,'h10')+')</td></tr>';
+            }).join('');
             const exampleRows=examples.slice(-8).map(function(x){return '<tr><td>'+escapeHtml(x.date)+'</td><td><b>'+escapeHtml(x.actual)+'</b></td>'+x.hits.map(function(hit){return '<td style="text-align:center">'+(hit?'✓':'—')+'</td>';}).join('')+'</tr>';}).join('');
-            out.innerHTML='<div class="backtest-panel"><div class="backtest-title">HASIL UJI WALK-FORWARD · '+escapeHtml(label)+'</div><div class="backtest-note">Data target berurutan: '+dated.length+' · Warm-up: '+firstTest+' hasil · Periode yang berhasil dinilai tercatat per metode. Periode dilewati: '+skipped+'.</div><div style="overflow-x:auto"><table class="backtest-table"><thead><tr><th>Metode</th><th>Uji valid</th><th>TOP 5 tepat</th><th>TOP 10 tepat</th></tr></thead><tbody>'+rows+'</tbody></table></div><div class="backtest-title" style="margin-top:14px">Contoh periode terakhir</div><div style="overflow-x:auto"><table class="backtest-table"><thead><tr><th>Tanggal</th><th>Aktual</th><th>Kategori 1</th><th>Kategori 2</th><th>Gabungan</th></tr></thead><tbody>'+exampleRows+'</tbody></table></div><div class="backtest-note">Kecocokan berarti angka 4D aktual sama persis dengan salah satu kandidat pada TOP 5/TOP 10. Ini evaluasi historis, bukan probabilitas atau jaminan hasil mendatang. Kategori 1 memakai penyelarasan berdasarkan urutan relatif histori, sesuai rancangan metode ini. Periode tanpa waktu sumber yang dapat diverifikasi tidak boleh dianggap valid.</div></div>';
+            out.innerHTML='<div class="backtest-panel"><div class="backtest-title">HASIL UJI WALK-FORWARD · '+escapeHtml(label)+'</div><div class="backtest-note">Data target berurutan: '+dated.length+' · Warm-up: '+firstTest+' hasil · Periode yang berhasil dinilai tercatat per metode. Periode dilewati: '+skipped+'.</div><div style="overflow-x:auto"><table class="backtest-table"><thead><tr><th>Metode</th><th>Uji valid</th><th>Hit TOP 5 / cakupan penuh</th><th>Hit TOP 10 / cakupan penuh dan rata-rata kandidat</th></tr></thead><tbody>'+rows+'</tbody></table></div><div class="backtest-title" style="margin-top:14px">Contoh periode terakhir</div><div style="overflow-x:auto"><table class="backtest-table"><thead><tr><th>Tanggal</th><th>Aktual</th><th>Kategori 1</th><th>Kategori 2</th><th>Gabungan</th></tr></thead><tbody>'+exampleRows+'</tbody></table></div><div class="backtest-note">Kategori 1 tidak memiliki ranking kandidat, sehingga kecocokan dihitung terhadap seluruh kandidat unik (bukan TOP 5/TOP 10). Kategori 2 sudah diurutkan berdasarkan skor sehingga memakai TOP 5/TOP 10. Untuk hasil irisan, kecocokan dihitung jika angka aktual muncul di mana pun dalam seluruh daftar irisan; rata-rata jumlah kandidat juga ditampilkan. Semua metode memakai seluruh periode valid sebagai denominator, termasuk periode tanpa kandidat. Ini evaluasi historis, bukan probabilitas atau jaminan hasil mendatang. Kategori 1 memakai penyelarasan berdasarkan urutan relatif histori, sesuai rancangan metode ini. Periode tanpa waktu sumber yang dapat diverifikasi tidak boleh dianggap valid.</div></div>';
         }catch(err){console.error('[kawin-backtest]',err);out.innerHTML='<div class="backtest-panel"><b>Pengujian gagal.</b><br>'+escapeHtml(err&&err.message?err.message:'Kesalahan tidak diketahui')+'</div>';}
         finally{
             marketHistory=originalHistory;activeMarket=originalActive;
@@ -3819,6 +3940,76 @@ function __ujiKalibrasi(errors){
     inconsistent.windowWeights={30:0.5,50:0.3,100:0.2};inconsistent.evaluationWindows=[30,50,100];
     if(pickCalibration(inconsistent,'smart').mode!=='smart')errors.push('Kalibrasi multi-jendela: tidak menahan mode saat keunggulan hanya pada satu periode.');
 }
+function __ujiFormulaMode(errors){
+    const weights={smart:[0.35,0.25,0.25,0.15],aggressive:[0.20,0.10,0.55,0.15],safe:[0.35,0.40,0.10,0.15],balanced:[0.35,0.25,0.20,0.20],sniper:[0.30,0.15,0.35,0.20],mistik:[0.35,0.20,0.20,0.25]};
+    const basis=[
+        {frequency:1,recency:0,momentum:0,streak:0},
+        {frequency:0,recency:1,momentum:0,streak:0},
+        {frequency:0,recency:0,momentum:1,streak:0},
+        {frequency:0,recency:0,momentum:0,streak:1}
+    ];
+    Object.keys(weights).forEach(function(mode){
+        if(Math.abs(weights[mode].reduce(function(a,b){return a+b;},0)-1)>1e-12)errors.push('Total bobot mode '+mode+' tidak sama dengan 1.');
+        basis.forEach(function(feature,index){
+            let expected=weights[mode][index];
+            if(mode==='safe'&&index===2)expected=0;
+            if(mode==='sniper')expected*=0.8125;
+            const actual=scoreFeature(Object.assign({digit:0},feature),mode,null);
+            if(Math.abs(actual-expected)>1e-12)errors.push('Bobot fitur ke-'+(index+1)+' mode '+mode+' tidak diterapkan sesuai rumus.');
+        });
+    });
+    const feature={digit:1,frequency:0.60,recency:0.50,momentum:0.80,streak:0.25};
+    const negative=Object.assign({},feature,{momentum:-0.80});
+    if(!(scoreFeature(feature,'aggressive',0)>scoreFeature(negative,'aggressive',0)))errors.push('Mode Agresif tidak memprioritaskan momentum positif.');
+    if(!(scoreFeature(negative,'safe',0)>scoreFeature(feature,'safe',0)))errors.push('Mode Safe tidak menerapkan komponen kontrarian momentum negatif.');
+    const sniperBase=0.30*feature.frequency+0.15*feature.recency+0.35*feature.momentum+0.20*feature.streak;
+    const sniperSignals=[feature.frequency,feature.recency,Math.max(0,feature.momentum),feature.streak].filter(function(v){return v>=0.55;}).length;
+    if(Math.abs(scoreFeature(feature,'sniper',0)-sniperBase*(0.75+sniperSignals*0.0625))>1e-12)errors.push('Pengali konfirmasi sinyal mode Sniper tidak sesuai.');
+    const mistikBase=0.35*feature.frequency+0.20*feature.recency+0.20*feature.momentum+0.25*feature.streak;
+    if(Math.abs(scoreFeature(feature,'mistik',0)-(mistikBase*0.88+0.10))>1e-12)errors.push('Bonus pasangan mode Neo-Mistik tidak sesuai.');
+    ANALYTIC_MODE_KEYS.forEach(function(mode){
+        const ranking=predictPositionBase(__UJI_FIXTURE,mode,0,AUTO_SAMPLE);
+        if(ranking.length!==10||new Set(ranking.map(function(x){return x.digit;})).size!==10)errors.push('Mode '+mode+' tidak menghasilkan ranking sepuluh digit unik.');
+        if(ranking.some(function(x){return !Number.isFinite(x.score)||x.score<0||x.score>1;}))errors.push('Mode '+mode+' menghasilkan skor di luar rentang 0–1.');
+        if(ranking.some(function(x,i){return i>0&&ranking[i-1].score<x.score;}))errors.push('Urutan ranking mode '+mode+' tidak menurun.');
+        const manual=predictPosition(__UJI_FIXTURE,mode,0,AUTO_SAMPLE,{invalid:true});
+        if(manual.some(function(x){return x.selectedMode!==mode||x.adaptive!==false||x.autoSelected!==false;}))errors.push('Mode manual '+mode+' berubah menjadi adaptif atau salah identitas.');
+    });
+}
+function __ujiModeMultiScenario(errors){
+    const scenarios={
+        fixture:__UJI_FIXTURE.slice(),
+        reversed:__UJI_FIXTURE.slice().reverse(),
+        constant:Array(30).fill('1111'),
+        short:['0000','9999','0101','1010','2222'],
+        alternating:Array.from({length:40},function(_,i){return i%2?'9090':'0909';})
+    };
+    let tested=0;
+    Object.keys(scenarios).forEach(function(scenarioName){
+        const data=scenarios[scenarioName];
+        ANALYTIC_MODE_KEYS.forEach(function(mode){
+            tested++;
+            try{
+                const result=hitungAIAnalytic(data,AUTO_SAMPLE,mode);
+                const validPositions=!!(result&&result.mode===mode&&Array.isArray(result.top3)&&result.top3.length===4&&Array.isArray(result.positionRankings)&&result.positionRankings.length===4);
+                if(!validPositions){errors.push('Skenario '+scenarioName+', mode '+mode+': struktur AI atau identitas mode tidak sesuai.');return;}
+                result.positionRankings.forEach(function(ranking,pos){
+                    if(!Array.isArray(ranking)||ranking.length!==10||ranking.some(function(item){return item.selectedMode!==mode||item.adaptive!==false||item.autoSelected!==false;}))errors.push('Skenario '+scenarioName+', mode '+mode+', posisi '+pos+': jalur manual tidak murni.');
+                });
+                result.top3.forEach(function(top,pos){
+                    if(!Array.isArray(top)||top.length!==3||new Set(top.map(function(item){return item.digit;})).size!==3||top.some(function(item){return !Number.isInteger(item.digit)||item.digit<0||item.digit>9||!Number.isFinite(item.score)||item.score<0||item.score>1;}))errors.push('Skenario '+scenarioName+', mode '+mode+', posisi '+pos+': Top 3 tidak valid.');
+                });
+                const bbfs=hitungBBFS(data,AUTO_SAMPLE,mode,result.positionRankings);
+                if(!bbfs||bbfs.mode!==mode||!Array.isArray(bbfs.bbfs)||bbfs.bbfs.length!==6||bbfs.adaptiveModes.some(function(m){return m!==mode;}))errors.push('Skenario '+scenarioName+', mode '+mode+': mode tidak diteruskan dengan benar ke BBFS.');
+                [2,3,4].forEach(function(k,index){
+                    const combo=hitungPrediksiKombinasi(data,AUTO_SAMPLE,k,mode,bbfs,result.positionRankings);
+                    if(!combo||combo.mode!==mode||combo.bbfs.join('')!==bbfs.bbfs.join('')||combo.totalCandidates!==[36,216,1296][index])errors.push('Skenario '+scenarioName+', mode '+mode+': propagasi ke kombinasi '+k+'D gagal.');
+                });
+            }catch(e){errors.push('Skenario '+scenarioName+', mode '+mode+': '+(e&&e.message||e));}
+        });
+    });
+    return{scenarioCount:Object.keys(scenarios).length,modeScenarioCount:tested,pass:errors.length===0};
+}
 function __ujiBBFS(errors){
     const result=hitungBBFS(__UJI_FIXTURE,AUTO_SAMPLE,'smart');
     if(!result||!Array.isArray(result.bbfs)||result.bbfs.length!==6)errors.push('BBFS tidak menghasilkan tepat 6 digit.');
@@ -3881,7 +4072,7 @@ function __ujiBacktestAuto(errors){
 function __ujiRunFullSuite(){
     const previousMarket=activeMarket;activeMarket='totomacau4d';
     try{
-        const results=ujiSemuaMode();const errors=[];const bbfsErrors=[];const bbfs=__ujiBBFS(bbfsErrors);bbfsErrors.forEach(function(e){errors.push(e);});const combinations=__ujiKombinasi(errors,bbfs);
+        const results=ujiSemuaMode();const errors=[];__ujiFormulaMode(errors);const scenarioErrors=[];const scenarioReport=__ujiModeMultiScenario(scenarioErrors);scenarioErrors.forEach(function(e){errors.push(e);});const bbfsErrors=[];const bbfs=__ujiBBFS(bbfsErrors);bbfsErrors.forEach(function(e){errors.push(e);});const combinations=__ujiKombinasi(errors,bbfs);
         const calibrationErrors=[];__ujiKalibrasi(calibrationErrors);calibrationErrors.forEach(function(e){errors.push(e);});
         const emptyAI=hitungAIAnalytic([],AUTO_SAMPLE,'smart');const emptyDataPass=!!(emptyAI&&Array.isArray(emptyAI.top3)&&emptyAI.top3.length===0&&hitungBBFS([],AUTO_SAMPLE)===null);if(!emptyDataPass)errors.push('Data kosong tidak ditangani dengan benar oleh mesin AI/BBFS.');
         const invalid= sanitizeData(['abcd','123','12345',null,'12a4']);const invalidDataPass=invalid.length===0;if(!invalidDataPass)errors.push('Validasi menolak data tidak valid belum berjalan benar.');
@@ -3889,8 +4080,8 @@ function __ujiRunFullSuite(){
         const combinationPass=!!(combinations&&combinations[2]&&combinations[2].count===36&&combinations[3]&&combinations[3].count===216&&combinations[4]&&combinations[4].count===1296);
         if(!combinationPass)errors.push('Pemeriksaan jumlah kandidat kombinasi 2D/3D/4D gagal.');
         const totalModeErrors=results.reduce(function(n,r){return n+r.errors.length;},0);
-        const allPass=results.every(function(r){return r.pass;})&&errors.length===0&&bbfsErrors.length===0&&calibrationErrors.length===0&&combinationPass&&emptyDataPass&&invalidDataPass&&backtestAutoPass;
-        return{results:results,errors:errors,allPass:allPass,checks:{modeCount:results.length,bbfs:!!bbfs&&bbfsErrors.length===0,combinationTypes:combinationPass?3:0,calibration:calibrationErrors.length===0,emptyData:emptyDataPass,invalidData:invalidDataPass,backtestAuto:backtestAutoPass,modeRankingValid:results.every(function(r){return r.pass;})},totalModeErrors:totalModeErrors};
+        const allPass=results.every(function(r){return r.pass;})&&errors.length===0&&bbfsErrors.length===0&&calibrationErrors.length===0&&combinationPass&&emptyDataPass&&invalidDataPass&&backtestAutoPass&&scenarioReport.pass;
+        return{results:results,errors:errors,allPass:allPass,checks:{modeCount:results.length,bbfs:!!bbfs&&bbfsErrors.length===0,combinationTypes:combinationPass?3:0,calibration:calibrationErrors.length===0,emptyData:emptyDataPass,invalidData:invalidDataPass,backtestAuto:backtestAutoPass,modeRankingValid:results.every(function(r){return r.pass;}),multiScenario:scenarioReport},totalModeErrors:totalModeErrors};
     }finally{activeMarket=previousMarket;}
 }
 window.ujiMode=ujiMode;window.ujiSemuaMode=ujiSemuaMode;
@@ -3948,10 +4139,10 @@ function renderUjiModeResults(report){
     const title=allPass?'LOGIKA LULUS PEMERIKSAAN':'ADA MASALAH PADA LOGIKA';
     const desc=allPass?'Semua aturan teknis yang diperiksa berjalan sesuai kriteria. Tidak ada pembandingan angka prediksi atau hasil keluaran.':'Ada aturan teknis yang gagal. Rincian di bawah menunjukkan bagian logika yang perlu diperiksa.';
     let html='<div class="backtest-panel" style="border:2px solid var(--'+color+')"><div style="font-size:15px;font-weight:900;color:var(--'+color+');margin-bottom:6px">'+title+'</div><div class="backtest-note" style="margin-top:0">'+desc+'</div><div class="backtest-note">'+report.checks.modeCount+' mode AI · BBFS · kombinasi 2D/3D/4D · kalibrasi · data kosong/tidak valid</div></div>';
-    html+='<div class="backtest-title" style="margin-top:14px">1. Pemeriksaan aturan setiap mode AI</div><table class="backtest-table"><thead><tr><th>Mode</th><th>Status logika</th><th>Catatan</th></tr></thead><tbody>';
+    html+='<div class="backtest-title" style="margin-top:14px">1. Pemeriksaan enam mode manual dan Auto Adaptive (terpisah)</div><table class="backtest-table"><thead><tr><th>Mode</th><th>Status logika</th><th>Catatan</th></tr></thead><tbody>';
     report.results.forEach(function(r){html+='<tr><td><b>'+(__UJI_MODE_LABELS[r.mode]||r.mode)+'</b></td><td style="color:var(--'+(r.pass?'success':'danger')+')">'+(r.pass?'✓ LULUS':'✗ GAGAL')+'</td><td style="font-size:10px">'+(r.errors.length?r.errors.map(escapeHtml).join('<br>'):'Struktur, validasi, batas skor, dan konsistensi proses OK')+'</td></tr>';});html+='</tbody></table>';
     html+='<div class="backtest-title" style="margin-top:14px">2. Pemeriksaan aturan fitur lain</div><div class="backtest-panel"><ul style="margin:0;padding-left:18px;line-height:1.8;font-size:11px">';
-    const checks=[['BBFS menghasilkan 6 digit unik dan digit cadangan terpisah',report.checks.bbfs],['Pembentukan kandidat 2D, 3D, dan 4D termasuk digit berulang',report.checks.combinationTypes===3],['Kalibrasi hanya berpindah mode jika syarat sampel dan keunggulan terpenuhi',report.checks.calibration],['Data kosong ditangani tanpa error',report.checks.emptyData],['Data tidak valid ditolak oleh validasi',report.checks.invalidData],['Auto diuji di backtest terhadap baseline Smart',report.checks.backtestAuto],['Ranking perhitungan mode terurut berdasarkan skor',report.checks.modeRankingValid]];
+    const checks=[['Enam mode manual diuji pada '+(report.checks.multiScenario?report.checks.multiScenario.scenarioCount:0)+' skenario input (total '+(report.checks.multiScenario?report.checks.multiScenario.modeScenarioCount:0)+' kombinasi mode-skenario)',!!(report.checks.multiScenario&&report.checks.multiScenario.pass)],['BBFS menghasilkan 6 digit unik dan digit cadangan terpisah',report.checks.bbfs],['Pembentukan kandidat 2D, 3D, dan 4D termasuk digit berulang',report.checks.combinationTypes===3],['Kalibrasi hanya berpindah mode jika syarat sampel dan keunggulan terpenuhi',report.checks.calibration],['Data kosong ditangani tanpa error',report.checks.emptyData],['Data tidak valid ditolak oleh validasi',report.checks.invalidData],['Auto diuji di backtest terhadap baseline Smart',report.checks.backtestAuto],['Ranking perhitungan mode terurut berdasarkan skor',report.checks.modeRankingValid]];
     checks.forEach(function(c){html+='<li style="color:var(--'+(c[1]?'success':'danger')+')">'+(c[1]?'✓ ':'✗ ')+c[0]+'</li>';});
     report.errors.forEach(function(e){html+='<li style="color:var(--danger)">'+escapeHtml(e)+'</li>';});html+='</ul></div>';
     html+='<div class="backtest-note" style="margin-top:12px">Cek Mode menguji cara kerja dan aturan internal program, bukan membandingkan angka prediksi, Top 3, skor keluaran, atau hasil undian. LULUS berarti kriteria logika yang diuji terpenuhi; bukan bukti prediksi lottery akurat. Pengujian memakai data contoh tetap berformat 4D dan belum menguji koneksi server/Apps Script.</div>';
@@ -4659,7 +4850,6 @@ window.onload=function(){
 </style>
 
 
-
 <style id="detail-analysis-dark-refinement">
 /* DETAIL ANALISA: kartu mengikuti palet gelap aplikasi, bukan tema putih lama */
 #tab-prediction .pred-explain-card,
@@ -4722,7 +4912,6 @@ window.onload=function(){
 }
 @media(max-width:380px){.ai-generator-copy{width:33px!important;height:33px!important;min-width:33px!important;flex-basis:33px!important}.ai-generator-actions .ai-generator-action.primary{min-width:136px!important;padding:9px 20px!important}}
 </style>
-
 
 
 <style id="ai-generator-minimal-refinement">
@@ -4871,7 +5060,6 @@ window.onload=function(){
  #historyList .pred-detail-2d-cell{padding:8px 2px!important;font-size:12px!important}
 }
 </style>
-
 
 
 <style id="pred-detail-content-compact-only">
@@ -5060,7 +5248,6 @@ button.btn-refresh-sm.sync-success svg{animation:none!important}
  .bottom-nav .nav-icon-wrap svg{width:17px!important;height:17px!important}
 }
 </style>
-
 
 
 <style id="navbar-docked-to-screen-edges">
@@ -5259,5 +5446,223 @@ button.btn-refresh-sm.sync-success svg{animation:none!important}
 }
 </style>
 
+
+<style id="kawin-layout-polish-v1">
+/* Perapihan visual tiga panel Kawin Silang — CSS only, tanpa mengubah logika */
+#kawinCard .kawin-results-categories{
+  display:block;
+  margin:14px 0 0;
+  padding:0;
+}
+#kawinCard .kawin-results-categories > section{
+  display:block;
+  width:100%;
+  margin:0 0 12px!important;
+  padding:14px!important;
+  border:1px solid rgba(148,163,184,.22)!important;
+  border-radius:17px!important;
+  background:linear-gradient(145deg,rgba(17,28,48,.96),rgba(11,18,32,.96))!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025)!important;
+}
+#kawinCard .kawin-results-categories > section:last-child{margin-bottom:0!important}
+#kawinCard .kawin-category-heading{
+  display:flex;
+  align-items:center;
+  min-height:24px;
+  margin:0 0 9px!important;
+  padding:0 1px;
+}
+#kawinCard .kawin-section-kicker{
+  margin:0!important;
+  color:#facc15!important;
+  font-size:clamp(11px,2.8vw,12px)!important;
+  line-height:1.35!important;
+  font-weight:850!important;
+  letter-spacing:.75px!important;
+}
+#kawinCard .kawin-category-dropdown{
+  margin:0!important;
+  border:1px solid rgba(148,163,184,.25)!important;
+  border-radius:13px!important;
+  background:rgba(8,15,29,.58)!important;
+  overflow:hidden;
+}
+#kawinCard .kawin-category-dropdown>summary{
+  min-height:48px;
+  padding:12px 13px!important;
+  color:#e2e8f0!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  font-weight:750!important;
+  letter-spacing:0!important;
+}
+#kawinCard .kawin-category-dropdown>summary:focus-visible{
+  outline:2px solid #facc15!important;
+  outline-offset:-3px;
+}
+#kawinCard .kawin-category-dropdown-chevron{
+  width:17px!important;height:17px!important;
+  color:#facc15!important;
+}
+#kawinCard .kawin-category-dropdown-body{
+  padding:0 12px 13px!important;
+}
+#kawinCard .kawin-section-description{
+  display:block!important;
+  margin:0 0 10px!important;
+  color:#9eacc1!important;
+  font-size:11px!important;
+  line-height:1.55!important;
+}
+#kawinCard .kawin-history-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 10px;
+  align-items:center;
+  justify-content:space-between;
+  margin:0 0 10px!important;
+  padding:8px 10px!important;
+  border:1px solid rgba(148,163,184,.16)!important;
+  border-radius:10px!important;
+  background:rgba(148,163,184,.06)!important;
+  color:#aebbd0!important;
+  font-size:10px!important;
+  line-height:1.4!important;
+}
+#kawinCard .kawin-result-note{
+  margin:0 0 10px!important;
+  padding:10px 11px!important;
+  border:1px solid rgba(148,163,184,.16)!important;
+  border-radius:11px!important;
+  background:rgba(148,163,184,.055)!important;
+  color:#aebbd0!important;
+  font-size:10.5px!important;
+  line-height:1.5!important;
+}
+#kawinCard .kawin-all-grid{gap:9px!important}
+#kawinCard .kawin-all-item{min-width:0;border-radius:12px!important}
+@media(max-width:420px){
+  #kawinCard .kawin-results-categories > section{padding:11px!important;margin-bottom:10px!important;border-radius:15px!important}
+  #kawinCard .kawin-category-heading{margin-bottom:8px!important}
+  #kawinCard .kawin-category-dropdown>summary{min-height:46px;padding:11px!important;font-size:12px!important}
+  #kawinCard .kawin-category-dropdown-body{padding:0 10px 11px!important}
+  #kawinCard .kawin-section-description{font-size:10.5px!important}
+}
+</style>
+
+
+<style id="kawin-remove-nested-frames-final">
+/* Override aturan layout lama yang muncul belakangan dan mengembalikan kotak bertumpuk */
+#kawinCard .kawin-results-categories > section{
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-bottom:1px solid rgba(148,163,184,.22)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#kawinCard .kawin-results-categories > section:last-child{border-bottom:0!important}
+#kawinCard .kawin-category-dropdown{
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+#kawinCard .kawin-category-dropdown>summary{
+  min-height:54px!important;
+  margin:0!important;
+  padding:14px 4px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#facc15!important;
+}
+#kawinCard .kawin-category-dropdown-body{
+  margin:0!important;
+  padding:0 4px 16px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#kawinCard .kawin-category-heading{margin:0 0 8px!important}
+#kawinCard .kawin-result-note{
+  border:0!important;
+  border-left:2px solid rgba(148,163,184,.35)!important;
+  border-radius:0 8px 8px 0!important;
+  background:rgba(148,163,184,.045)!important;
+  box-shadow:none!important;
+  padding:9px 12px!important;
+}
+@media(max-width:420px){
+  #kawinCard .kawin-category-dropdown>summary{min-height:48px!important;padding:12px 3px!important}
+  #kawinCard .kawin-category-dropdown-body{padding:0 3px 13px!important}
+}
+</style>
+
+
+<style id="kawin-note-spacing-final">
+/* Beri jarak agar panel keterangan tidak menempel pada kotak sebelumnya */
+#kawinCard .kawin-result-note {
+  margin-top: 12px !important;
+}
+#kawinCard .kawin-result-note + .kawin-result-note {
+  margin-top: 12px !important;
+}
+@media (max-width: 420px) {
+  #kawinCard .kawin-result-note {
+    margin-top: 11px !important;
+  }
+}
+</style>
+
+
+<style id="kawin-empty-title-typography-final">
+/* Samakan ukuran dan ketebalan judul kosong dengan teks hint; pertahankan warna judul */
+#kawinCard .kawin-empty-merge .kawin-empty-merge-title {
+  font-size:12px !important;
+  font-weight:500 !important;
+  line-height:1.45 !important;
+  color:#e2e8f0 !important;
+}
+</style>
+
+
+<style id="auto-mode-summary-layout">
+.auto-mode-summary{display:grid;gap:10px;margin:0 0 12px;padding:12px;border:1px solid rgba(148,163,184,.22);border-radius:13px;background:rgba(30,41,59,.28)}
+.auto-mode-row{display:grid;gap:8px}
+.auto-mode-label{color:#facc15;font-size:10px;font-weight:800;letter-spacing:.08em;line-height:1.3}
+.auto-mode-values{display:flex;flex-wrap:wrap;gap:7px}
+.auto-mode-chip{display:flex;align-items:center;gap:6px;padding:7px 9px;border:1px solid rgba(148,163,184,.2);border-radius:9px;background:rgba(15,23,42,.5);color:#cbd5e1;font-size:11px;line-height:1.35}
+.auto-mode-chip strong{color:#f8fafc;font-weight:700}
+.auto-mode-note,.mode-active-note{display:grid;gap:3px;font-size:11px;line-height:1.5;color:#94a3b8}
+.auto-mode-note{padding-top:9px;border-top:1px solid rgba(148,163,184,.16)}
+.auto-mode-note b,.mode-active-note b{color:#cbd5e1;font-weight:700}
+.mode-active-note{margin:0 0 12px!important;padding:10px 12px;border-left:3px solid #64748b;border-radius:0 9px 9px 0;background:rgba(30,41,59,.24)}
+</style>
+
+
+<style id="auto-mode-single-notice">
+/* Satukan rincian Auto ke dalam notice Mode Aktif agar tidak membuat kotak bertumpuk */
+.mode-active-note .auto-mode-summary{
+  display:grid;gap:9px;margin:10px 0 0;padding:10px 0 0;
+  border:0;border-top:1px solid rgba(148,163,184,.18);
+  border-radius:0;background:transparent
+}
+.mode-active-note .auto-mode-row{display:grid;gap:7px}
+.mode-active-note .auto-mode-label{font-size:10px}
+.mode-active-note .auto-mode-values{gap:6px}
+.mode-active-note .auto-mode-chip{padding:5px 8px;font-size:11px}
+.mode-active-note .auto-mode-note{padding-top:8px}
+</style>
+
+
+<style id="mode-picker-hint-compact">
+.mode-picker-hint{margin-top:8px;padding:8px 10px;border-left:2px solid rgba(250,204,21,.65);border-radius:0 8px 8px 0;background:rgba(30,41,59,.22);color:var(--text-muted);font-size:10px;line-height:1.45}
+</style>
 </body>
 </html>
