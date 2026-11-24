@@ -2313,7 +2313,10 @@ function persistPredictionHistory(){if(!__predictionHistoryCache)return false;tr
 const PREDICTION_ARCHIVE_SYNC_KEY='asLotteryPredictionArchiveSyncV1';
 let __predictionArchiveSyncPromise=null;
 function predictionArchiveIdentity(rec){
-    return [normalizeMarket(rec&&rec.market),String(rec&&rec.tanggal||''),String(rec&&rec.jam||''),String(rec&&rec.angka||''),String(rec&&(rec.eventId||rec.requestId)||'')].join('|');
+    const market=normalizeMarket(rec&&rec.market);
+    const eventId=String(rec&&(rec.eventId||rec.requestId||rec.uuid)||'').trim();
+    if(eventId)return market+'|event|'+eventId;
+    return [market,'slot',String(rec&&rec.tanggal||''),String(rec&&rec.jam||'')].join('|');
 }
 function mergePredictionArchiveRecords(records){
     if(!Array.isArray(records))return 0;
@@ -2327,7 +2330,10 @@ function mergePredictionArchiveRecords(records){
         const key=predictionArchiveIdentity(normalized);
         const idx=list.findIndex(function(x){return predictionArchiveIdentity(x)===key;});
         if(idx<0){list.push(normalized);added++;changed=true;}
-        else if(JSON.stringify(normalized).length>JSON.stringify(list[idx]).length){list[idx]=normalized;changed=true;}
+        else {
+            const oldTs=Number(list[idx].ts||list[idx].updatedAtMs||0),newTs=Number(normalized.ts||normalized.updatedAtMs||0);
+            if((newTs>0&&(!oldTs||newTs>=oldTs))||(!oldTs&&!newTs&&JSON.stringify(normalized).length>=JSON.stringify(list[idx]).length)){if(JSON.stringify(normalized)!==JSON.stringify(list[idx])){list[idx]=normalized;changed=true;}}
+        }
         list.sort(function(a,b){return Number(a.ts||0)-Number(b.ts||0);});
         if(list.length>1000)list.splice(0,list.length-1000);
     });
@@ -2366,8 +2372,15 @@ function savePredictionRecord(marketKey,record){
     if(!MARKETS[marketKey]||!record||typeof record!=='object'||Array.isArray(record))return false;
     const all=loadPredictionHistory();const previous=Array.isArray(all[marketKey])?all[marketKey]:[];
     const requestId=record.requestId?String(record.requestId):'';const eventId=record.eventId?String(record.eventId):'';
-    if((requestId||eventId)&&previous.some(function(x){return x&&((requestId&&String(x.requestId||'')===requestId)||(eventId&&String(x.eventId||'')===eventId));}))return true;
-    const next=previous.slice();next.push(record);if(next.length>500)next.splice(0,next.length-500);all[marketKey]=next;
+    const identity=predictionArchiveIdentity(Object.assign({},record,{market:marketKey}));
+    const existingIndex=previous.findIndex(function(x){return x&&predictionArchiveIdentity(x)===identity;});
+    const next=previous.slice();
+    if(existingIndex>=0){
+        const oldTs=Number(next[existingIndex].ts||next[existingIndex].updatedAtMs||0),newTs=Number(record.ts||record.updatedAtMs||0);
+        if(oldTs&&(!newTs||newTs<oldTs))return true;
+        next[existingIndex]=record;
+    }else next.push(record);
+    if(next.length>500)next.splice(0,next.length-500);all[marketKey]=next;
     if(persistPredictionHistory())return true;
     all[marketKey]=previous;
     return false;
